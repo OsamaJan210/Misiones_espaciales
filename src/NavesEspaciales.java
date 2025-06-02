@@ -21,13 +21,6 @@ public class NavesEspaciales {
         this.experienciaCientifica = experienciaCientifica;
         this.experienciaEstrategica = experienciaEstrategica;
     }
-    /*public NavesEspaciales(String nombre, int autonomiaMaxima, int autonomiaActual, int capacidadCarga, boolean sensoresCientificos) {
-        this.nombre = nombre;
-        this.autonomiaMaxima = autonomiaMaxima;
-        this.autonomiaActual = autonomiaActual;
-        this.capacidadCarga = capacidadCarga;
-        this.sensoresCientificos = sensoresCientificos;
-    }*/
 
     public String getNombre() {
         return nombre;

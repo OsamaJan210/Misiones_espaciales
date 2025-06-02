@@ -7,7 +7,6 @@ import enums.MissionType;
 
 public class Main {
     public static void main(String[] args) {
-       // System.out.printf("Simulador de Misiones Espaciales!");
         List<NavesEspaciales> naves = new ArrayList<>();
         List<Mision> misiones = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
@@ -34,29 +33,29 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    registarMision();
+                   // registarMision();
                 break;
                 case 2:
-                    registarNave();
+                  //  registarNave();
                 break;
                 case 3:
-                    simularCiclo();
+                   // simularCiclo();
                 break;
                 case 4:
-                    mostrarEstado();
+                  //  mostrarEstado();
                 break;
                 case 5:
-                    buscarMisiones();
+                  //  buscarMisiones();
                 break;
                 case 6:
-                    generarRanking();
+                  //  generarRanking();
                 break;
                 case 7:
                     System.out.println("Adios!");
                 break;
                 
             }
-        }while (opcion!=7); 
+        }while (opcion!=7);
+        scanner.close();
         }
-        
 }
