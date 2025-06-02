@@ -1,8 +1,11 @@
+import java.util.Scanner;
+
 import enums.ExperienciaTipo;
 import enums.MissionStatus;
 import enums.MissionType;
 
 public class Mision{
+    Scanner scanner = new Scanner(System.in);
 
     private String nombre;
     private int duracion;
@@ -78,5 +81,21 @@ public class Mision{
                 ", tipo=" + tipo +
                 ", experienciaRequerida=" + experienciaRequerida +
                 '}';
+    }
+
+    public void registarMision(){
+        System.out.println("Nombre: ");
+        this.nombre = scanner.nextLine();
+        System.out.println("Tipo de mision(Exploración, Recolección de datos, Colonización): ");
+        int opcion = scanner.nextInt();
+        if (opcion) {
+            
+        }
+        System.out.println("Duración: ");
+        this.duracion = scanner.nextInt();
+        System.out.println("Prioridad: ");
+        this.prioridad = scanner.nextInt();
+        System.out.println("Experiencia requerida(Cientifica, Tecnica, Estrategica): ");
+        this.experienciaRequerida = ExperienciaTipo.valueOf(scanner.next().toUpperCase());
     }
 }
