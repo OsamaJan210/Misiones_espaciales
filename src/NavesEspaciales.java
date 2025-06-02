@@ -21,6 +21,13 @@ public class NavesEspaciales {
         this.experienciaCientifica = experienciaCientifica;
         this.experienciaEstrategica = experienciaEstrategica;
     }
+    /*public NavesEspaciales(String nombre, int autonomiaMaxima, int autonomiaActual, int capacidadCarga, boolean sensoresCientificos) {
+        this.nombre = nombre;
+        this.autonomiaMaxima = autonomiaMaxima;
+        this.autonomiaActual = autonomiaActual;
+        this.capacidadCarga = capacidadCarga;
+        this.sensoresCientificos = sensoresCientificos;
+    }*/
 
     public String getNombre() {
         return nombre;
@@ -58,15 +65,21 @@ public class NavesEspaciales {
         return experienciaEstrategica;
     }
 
-    public void ejecutarMision(Mision m, boolean exito, int experienciaExtra) {
-        autonomiaActual -= m.getDuracion();
-        if (exito) {
-            switch (m.getExperienciaRequerida()) {
-                case CIENTIFICA -> experienciaCientifica += 1 + experienciaExtra;
-                case TECNICA -> experienciaTecnica += 1 + experienciaExtra;
-                case ESTRATEGICA -> experienciaEstrategica += 1 + experienciaExtra;
-            }
+    public boolean esApta(Mision m){
+        if(autonomiaActual < m.getDuracion()) {
+            return false;
         }
+        switch (m.getTipo()) {
+            case   EXPLORACION:
+                return autonomiaMaxima > 1000;
+        
+            case RECOLECCION_DATOS:
+                return sensoresCientificos;
+            
+            case COLONIZACION:
+                return capacidadCarga >=500;
+        }
+        return false;
     }
 
 }
