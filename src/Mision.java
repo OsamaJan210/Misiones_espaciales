@@ -67,4 +67,16 @@ public class Mision{
     public void setExperienciaRequerida(ExperienciaTipo experienciaRequerida) {
         this.experienciaRequerida = experienciaRequerida;
     }
+
+    @Override
+    public String toString() {
+        return "Mision{" +
+                "nombre='" + nombre + '\'' +
+                ", duracion=" + duracion +
+                ", prioridad=" + prioridad +
+                ", estado=" + estado +
+                ", tipo=" + tipo +
+                ", experienciaRequerida=" + experienciaRequerida +
+                '}';
+    }
 }
