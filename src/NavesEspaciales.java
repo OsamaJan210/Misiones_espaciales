@@ -58,4 +58,15 @@ public class NavesEspaciales {
         return experienciaEstrategica;
     }
 
+    public void ejecutarMision(Mision m, boolean exito, int experienciaExtra) {
+        autonomiaActual -= m.getDuracion();
+        if (exito) {
+            switch (m.getExperienciaRequerida()) {
+                case CIENTIFICA -> experienciaCientifica += 1 + experienciaExtra;
+                case TECNICA -> experienciaTecnica += 1 + experienciaExtra;
+                case ESTRATEGICA -> experienciaEstrategica += 1 + experienciaExtra;
+            }
+        }
+    }
+
 }
