@@ -1,5 +1,11 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class NavesEspaciales {
     
+    private static List<NavesEspaciales> naves = new ArrayList<>();
+
     private String nombre;
     private int autonomiaMaxima;
     private int autonomiaActual;
@@ -22,6 +28,48 @@ public class NavesEspaciales {
         this.experienciaEstrategica = experienciaEstrategica;
     }
 
+    public static NavesEspaciales registrarNave(){
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Nombre de la nave: ");
+        String nombre = scanner.nextLine();
+
+        System.out.println("Autonomia máxima: ");
+        int autonomiaMaxima = scanner.nextInt();
+
+        System.out.println("Autonomia actual: ");
+        int autonomiaActual = scanner.nextInt();
+
+        System.out.println("Capacidad de carga: ");
+        int capacidadCarga = scanner.nextInt();
+
+        System.out.println("¿Sensores cientificos? (true/false) ");
+        boolean sensoresCientificos = scanner.nextBoolean();
+
+        System.out.println("Experiencia total: ");
+        int experienciaTotal = scanner.nextInt();
+
+        System.out.println("Experiencia técnica: ");
+        int experienciaTecnica = scanner.nextInt();
+
+        System.out.println("Experiencia cientifica: ");
+        int experienciaCientifica = scanner.nextInt();
+
+        System.out.println("Experiencia estratégica: ");
+        int experienciaEstrategica = scanner.nextInt();
+        scanner.nextLine();
+        scanner.close();
+
+        NavesEspaciales nave = new NavesEspaciales(nombre, autonomiaMaxima, autonomiaActual,
+        capacidadCarga, sensoresCientificos, experienciaTotal, experienciaTecnica,
+        experienciaCientifica, experienciaEstrategica);
+
+        naves.add(nave);
+        System.out.println("Nave registrada exitosamente.");
+
+        return nave;
+    }
     public String getNombre() {
         return nombre;
     }

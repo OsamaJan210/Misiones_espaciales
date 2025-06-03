@@ -36,7 +36,7 @@ public class Main {
                   Mision.registrarMision();
                 break;
                 case 2:
-                  //  registarNave();
+                  NavesEspaciales.registrarNave();
                 break;
                 case 3:
                    // simularCiclo();
