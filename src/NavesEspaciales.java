@@ -59,7 +59,6 @@ public class NavesEspaciales {
         System.out.println("Experiencia estratégica: ");
         int experienciaEstrategica = scanner.nextInt();
         scanner.nextLine();
-        scanner.close();
 
         NavesEspaciales nave = new NavesEspaciales(nombre, autonomiaMaxima, autonomiaActual,
         capacidadCarga, sensoresCientificos, experienciaTotal, experienciaTecnica,
@@ -106,21 +105,13 @@ public class NavesEspaciales {
         return experienciaEstrategica;
     }
 
-    public boolean esApta(Mision m){
-        if(autonomiaActual < m.getDuracion()) {
-            return false;
+    public static void logNaves(){
+        System.out.println("******NAVES*****");
+        for (NavesEspaciales naves : naves){
+            naves.logNave();
         }
-        switch (m.getTipo()) {
-            case   EXPLORACION:
-                return autonomiaMaxima > 1000;
-        
-            case RECOLECCION_DATOS:
-                return sensoresCientificos;
-            
-            case COLONIZACION:
-                return capacidadCarga >=500;
-        }
-        return false;
     }
-
+    public void logNave(){
+        System.out.println("\nNombre: "+this.nombre+"\nAutonomia máxima: "+this.autonomiaMaxima+"\nAutonomia actual: "+this.autonomiaActual+"\nCapacidad de carga: "+this.capacidadCarga+"\nSensores cientificos: "+this.sensoresCientificos+"\nExperiencia total: "+this.experienciaTotal+"\nExperiencia técnica: "+this.experienciaTecnica+"\nExperiencia científica: "+this.experienciaCientifica+"\nExperiencia estratégica: "+this.experienciaEstrategica);
+    }
 }

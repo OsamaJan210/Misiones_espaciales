@@ -1,9 +1,5 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import enums.ExperienciaTipo;
-import enums.MissionType;
 
 public class Main {
     public static void main(String[] args) {
@@ -55,9 +51,9 @@ public class Main {
                 break;
             }
         }while (opcion!=7);
+        scanner.close();
         //Logs para verificar el funcionamiento
         Mision.logMisiones();
-
-        scanner.close();
+        NavesEspaciales.logNaves();
         }
 }

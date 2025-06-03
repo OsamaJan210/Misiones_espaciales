@@ -61,15 +61,16 @@ public abstract class Mision{
         scanner.nextLine();
 
         System.out.println("\nMision añadida correctamente\n");
-        scanner.close();
+        misiones.add(mision);
         return mision;
     }
     public static void logMisiones(){
+        System.out.println("*****MISIONES*****");
         for (Mision misiones : misiones){
             misiones.logMision();
         }
     }
     public void logMision(){
-        System.out.println("Nombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado);
+        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado);
     }
 }
