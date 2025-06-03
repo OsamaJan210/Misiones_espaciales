@@ -3,9 +3,11 @@ import enums.MissionType;
 
 public class MisionRecoleccion extends Mision{
 
-    public MisionRecoleccion(String nombre, int duracion, int prioridad, MissionType tipo,
-            ExperienciaTipo experienciaRequerida) {
-        super(nombre, duracion, prioridad, tipo, experienciaRequerida);
+    public MisionRecoleccion(String nombre, int prioridad) {
+
+        super(nombre,prioridad);
     }
-    
+    @Override
+    public void acabarDeRegistrarDatos(){
+    }
 }

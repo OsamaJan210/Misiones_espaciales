@@ -6,23 +6,22 @@ import enums.ExperienciaTipo;
 import enums.MissionStatus;
 import enums.MissionType;
 
-public class Mision{
-    Scanner scanner = new Scanner(System.in);
+public abstract class Mision{
 
-    List<Mision> misiones = new ArrayList<>();
-    private String nombre;
-    private int duracion;
-    private int prioridad;
+    static List<Mision> misiones = new ArrayList<>();
+    protected String nombre;
+    protected int duracion;
+    protected int prioridad;
     protected MissionStatus estado;
     protected MissionType tipo;
     protected ExperienciaTipo experienciaRequerida;
 
-    public Mision(String nombre, int duracion, int prioridad, MissionType tipo, ExperienciaTipo experienciaRequerida) {
+    public Mision(){
+    }
+
+    public Mision(String nombre, int prioridad) {
         this.nombre = nombre;
-        this.duracion = duracion;
         this.prioridad = prioridad;
-        this.tipo = tipo;
-        this.experienciaRequerida = experienciaRequerida;
         this.estado = MissionStatus.PENDIENTE;
     }
 
@@ -30,99 +29,43 @@ public class Mision{
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public int getDuracion() {
         return duracion;
-    }
-
-    public void setDuracion(int duracion) {
-        this.duracion = duracion;
     }
 
     public int getPrioridad() {
         return prioridad;
     }
+    public abstract void acabarDeRegistrarDatos();
 
-    public void setPrioridad(int prioridad) {
-        this.prioridad = prioridad;
-    }
-
-    public MissionStatus getEstado() {
-        return estado;
-    }
-
-    public void setEstado(MissionStatus estado) {
-        this.estado = estado;
-    }
-
-    public MissionType getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(MissionType tipo) {
-        this.tipo = tipo;
-    }
-
-    public ExperienciaTipo getExperienciaRequerida() {
-        return experienciaRequerida;
-    }
-
-    public void setExperienciaRequerida(ExperienciaTipo experienciaRequerida) {
-        this.experienciaRequerida = experienciaRequerida;
-    }
-
-    @Override
-    public String toString() {
-        return "Mision{" +
-                "nombre='" + nombre + '\'' +
-                ", duracion=" + duracion +
-                ", prioridad=" + prioridad +
-                ", estado=" + estado +
-                ", tipo=" + tipo +
-                ", experienciaRequerida=" + experienciaRequerida +
-                '}';
-    }
-
-    public void registrarMision(){
+    public static Mision registrarMision(){
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Nombre: ");
-        nombre = scanner.nextLine();
-        System.out.println("Tipo de mision: 1)Exploración, 2)Recolección de datos, 3)Colonización): ");
+        String nombre = scanner.nextLine();
+        System.out.println("Prioridad: ");
+        int prioridad = scanner.nextInt();
+
+        System.out.println("Tipo de mision: 1)Colonización, 2)Exploración, 3)Recolección de datos): ");
         int opcion = scanner.nextInt();
+        Mision mision;
         if (opcion == 1) {
-            this.tipo = MissionType.EXPLORACION;
+            mision = new MisionColonizacion(nombre, prioridad);
         }
         else if(opcion ==2){
-            this.tipo = MissionType.RECOLECCION_DATOS;
+            mision = new MisionExploracion(nombre, prioridad);
         }
         else{
-            this.tipo = MissionType.COLONIZACION;
+            mision = new MisionRecoleccion(nombre, prioridad);
         }
-        System.out.println("Duración: ");
-        this.duracion = scanner.nextInt();
-        System.out.println("Prioridad: ");
-        this.prioridad = scanner.nextInt();
-        System.out.println("Experiencia requerida: 1)Cientifica, 2)Tecnica, 3)Estrategica): ");
-        int opcion2 = scanner.nextInt();
-        if(opcion2 == 1){
-            this.experienciaRequerida = ExperienciaTipo.CIENTIFICA;
-        }
-        else if(opcion2 == 2){
-            this.experienciaRequerida = ExperienciaTipo.TECNICA;
-        }
-        else{
-            this.experienciaRequerida = ExperienciaTipo.ESTRATEGICA;
-        }
-        Mision nuevamision = new Mision(nombre, opcion, opcion2, tipo, experienciaRequerida);
-        misiones.add(nuevamision);
+        mision.acabarDeRegistrarDatos();
+        scanner.nextLine();
 
         System.out.println("\nMision añadida correctamente\n");
+        scanner.close();
+        return mision;
     }
-
-    public void logMisiones(){
-        for (Mision misiones : this.misiones){
+    public static void logMisiones(){
+        for (Mision misiones : misiones){
             misiones.logMision();
         }
     }

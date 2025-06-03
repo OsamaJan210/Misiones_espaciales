@@ -7,9 +7,9 @@ import enums.MissionType;
 
 public class Main {
     public static void main(String[] args) {
-       // List<NavesEspaciales> naves = new ArrayList<>();
+        //List<NavesEspaciales> naves = new ArrayList<>();
         //List<Mision> misiones = new ArrayList<>();
-        Mision misiones = new Mision(null, 0, 0, null, null);
+        
         Scanner scanner = new Scanner(System.in);
 
         /*NavesEspaciales nave1 = new NavesEspaciales("Omega", 1500, 1500, 700, true,0,0,0,0);
@@ -31,10 +31,9 @@ public class Main {
         do{
             System.out.println("\n*****Bienvenido al simulador espacial*****\n\n¿Que deseas hacer?\n\n1)Registrar Mision\n2)Registar Nave\n3)Simular un ciclo\n4)Mostrar estado general\n5)Buscar Mision\n6)Ranking de naves\n7)Salir");
             opcion = scanner.nextInt();
-            scanner.nextLine();
             switch (opcion) {
                 case 1:
-                  misiones.registrarMision();
+                  Mision.registrarMision();
                 break;
                 case 2:
                   //  registarNave();
@@ -57,7 +56,7 @@ public class Main {
             }
         }while (opcion!=7);
         //Logs para verificar el funcionamiento
-        misiones.logMisiones();
+        Mision.logMisiones();
 
         scanner.close();
         }
