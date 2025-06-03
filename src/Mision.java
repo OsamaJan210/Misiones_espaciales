@@ -88,7 +88,7 @@ public class Mision{
 
     public void registrarMision(){
         System.out.println("Nombre: ");
-        this.nombre = scanner.nextLine();
+        nombre = scanner.nextLine();
         System.out.println("Tipo de mision: 1)Exploración, 2)Recolección de datos, 3)Colonización): ");
         int opcion = scanner.nextInt();
         if (opcion == 1) {

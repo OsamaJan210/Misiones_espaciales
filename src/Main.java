@@ -7,8 +7,8 @@ import enums.MissionType;
 
 public class Main {
     public static void main(String[] args) {
-        //List<NavesEspaciales> naves = new ArrayList<>();
-       // List<Mision> misiones = new ArrayList<>();
+       // List<NavesEspaciales> naves = new ArrayList<>();
+        //List<Mision> misiones = new ArrayList<>();
         Mision misiones = new Mision(null, 0, 0, null, null);
         Scanner scanner = new Scanner(System.in);
 
