@@ -87,7 +87,7 @@ public class NavesEspaciales {
         System.out.println("== Ranking ==");
         naves.sort(Comparator.comparingInt(NavesEspaciales::getExperienciaTotal));
         for(NavesEspaciales nave : naves){
-            System.out.println("- Nombre: " + nave.getNombre());
+            System.out.println("- Nombre: " + nave.getNombre()+"- Experiencia total: "+ nave.getExperienciaTotal());
         }
 
 
