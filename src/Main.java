@@ -13,10 +13,6 @@ public class Main {
 
         Simulacion simulacion = new Simulacion();
         simulacion.iniciar();
-
-
-
-
         Scanner scanner = new Scanner(System.in);
 
         NavesEspaciales nave1 = new NavesEspaciales("Omega", 1500, 1500, 700, true,0,0,0,0);
@@ -42,7 +38,7 @@ public class Main {
                   NavesEspaciales.registrarNave();
                 break;
                 case 3:
-                   // simularCiclo();
+                  //  simularCiclo();
                 break;
                 case 4:
                   NavesEspaciales.mostrarEstado();

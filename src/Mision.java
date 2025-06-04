@@ -133,7 +133,7 @@ public abstract class Mision{
         }
     }
     public void logMision(){
-        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
+        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+Mision.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
     }
 }
 
