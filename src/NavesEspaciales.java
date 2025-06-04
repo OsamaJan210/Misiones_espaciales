@@ -36,6 +36,18 @@ public class NavesEspaciales {
         System.out.println("Nombre de la nave: ");
         String nombre = scanner.nextLine();
 
+        boolean nombreNaveExiste = false;
+        for (NavesEspaciales nave: naves ){
+            if (nave.getNombre().equalsIgnoreCase(nombre)){
+                nombreNaveExiste = true;
+                break;
+            }
+        }
+        if (nombreNaveExiste) {
+            System.out.println("Error: Ya existe una nove con ese nombre. Registro de nave cancelado.");
+            return null;
+        }
+
         System.out.println("Autonomia máxima: ");
         int autonomiaMaxima = scanner.nextInt();
 
@@ -44,6 +56,16 @@ public class NavesEspaciales {
 
         System.out.println("Capacidad de carga: ");
         int capacidadCarga = scanner.nextInt();
+
+        if (autonomiaMaxima <= 0 || autonomiaActual <= 0 || capacidadCarga <= 0){
+            System.out.println("Error: La autonomia y carga deben ser valores mayores que 0. Registro cancelado.");
+            return null;
+        }
+
+        if (autonomiaActual > autonomiaMaxima){
+            System.out.println("Error: La autonomía actual no puede ser superior a la máxima. Registro cancelado.");
+            return null;
+        }
 
         System.out.println("¿Sensores cientificos? (true/false) ");
         boolean sensoresCientificos = scanner.nextBoolean();
