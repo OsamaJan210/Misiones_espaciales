@@ -49,14 +49,13 @@ public abstract class Mision{
     }
     public abstract void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado);
 
-    public static Mision registrarMision(){
+    public static Mision registrarMision(Scanner scanner){
         boolean nombreExistente = false;
         boolean prioridadExistente = false;
         boolean misionValida = true;
         String nombre;
         int prioridad;
         int opcion;
-        Scanner scanner = new Scanner(System.in);
         do{
             nombreExistente = false;
             System.out.println("Nombre: ");
@@ -106,9 +105,8 @@ public abstract class Mision{
         return mision; 
     }
 
-    public static Mision buscarMisiones(){
+    public static Mision buscarMisiones(Scanner scanner){
 
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Ingrese el nombre de la misión a buscar: ");
         String nombreMision = scanner.nextLine();
 

@@ -29,9 +29,7 @@ public class NavesEspaciales {
         this.experienciaEstrategica = experienciaEstrategica;
     }
 
-    public static NavesEspaciales registrarNave(){
-
-        Scanner scanner = new Scanner(System.in);
+    public static NavesEspaciales registrarNave(Scanner scanner){
 
         System.out.println("Nombre de la nave: ");
         String nombre = scanner.nextLine();

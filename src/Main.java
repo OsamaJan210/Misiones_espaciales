@@ -21,10 +21,10 @@ public class Main {
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
-                  Mision.registrarMision();
+                  Mision.registrarMision(scanner);
                 break;
                 case 2:
-                  NavesEspaciales.registrarNave();
+                  NavesEspaciales.registrarNave(scanner);
                 break;
                 case 3:
                   //  simularCiclo();
@@ -33,7 +33,7 @@ public class Main {
                   NavesEspaciales.mostrarEstado();
                 break;
                 case 5:
-                  Mision.buscarMisiones();
+                  Mision.buscarMisiones(scanner);
                 break;
                 case 6:
                   NavesEspaciales.generarRanking();

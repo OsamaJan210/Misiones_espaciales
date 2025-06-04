@@ -13,10 +13,10 @@ public class Simulacion {
 
             switch (opcion) {
                 case 1:
-                    Mision.registrarMision();
+                   // Mision.registrarMision();
                     break;
                 case 2:
-                    NavesEspaciales.registrarNave();
+                 //   NavesEspaciales.registrarNave();
                     break;
                 case 3:
                     // simularCiclo();
