@@ -42,7 +42,7 @@ public class Main {
                   //  mostrarEstado();
                 break;
                 case 5:
-                  Mision.buscarMisiones();
+                   Mision.buscarMisiones();
                 break;
                 case 6:
                   //  generarRanking();
