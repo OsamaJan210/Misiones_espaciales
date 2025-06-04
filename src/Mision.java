@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +15,7 @@ public abstract class Mision{
     protected int prioridad;
     protected MissionStatus estado;
     protected MissionType tipo;
-    protected ExperienciaTipo experienciaRequerida;
+    protected EnumMap<ExperienciaTipo, Integer> experienciaRequerida = new EnumMap<>(ExperienciaTipo.class);
 
     public Mision(){
     }
@@ -32,6 +33,15 @@ public abstract class Mision{
     public int getDuracion() {
         return duracion;
     }
+
+    public void setExperiencia(ExperienciaTipo tipo, int cantidad){
+        experienciaRequerida.put(tipo, cantidad);
+    }
+
+    public int getExperiencia(ExperienciaTipo tipo) {
+        return experienciaRequerida.getOrDefault(tipo, 0);
+    }
+
 
     public int getPrioridad() {
         return prioridad;

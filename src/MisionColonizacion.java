@@ -11,7 +11,7 @@ public class MisionColonizacion extends Mision{
     }
 
     public MisionColonizacion(String nombre, int prioridad){
-        
+
     }
 
     @Override
@@ -29,6 +29,8 @@ public class MisionColonizacion extends Mision{
         }while(duracion<6);
         System.out.println("Indica la cantidad de experiencia estratégica que necesitas: ");
         int cantidadXP = scanner.nextInt();
+
+        setExperiencia(experiencia, cantidadXP);
     }
     
 }

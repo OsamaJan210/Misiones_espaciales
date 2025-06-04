@@ -6,9 +6,13 @@ import enums.MissionType;
 public class MisionRecoleccion extends Mision{
     Scanner scanner = new Scanner(System.in);
 
-    public MisionRecoleccion(String nombre, int prioridad) {
+    public MisionRecoleccion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP) {
 
         super(nombre,prioridad);
+    }
+
+    public MisionRecoleccion(String nombre, int prioridad){
+
     }
 
     @Override
@@ -27,6 +31,8 @@ public class MisionRecoleccion extends Mision{
         }while(duracion<4 && duracion>8);
         System.out.println("Indica la cantidad de experiencia de recolección que necesita: ");
         int cantidadXP = scanner.nextInt();
+
+        setExperiencia(experiencia, cantidadXP);
 
         scanner.close();
     }
