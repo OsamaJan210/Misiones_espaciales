@@ -20,7 +20,7 @@ public class MisionExploracion extends Mision{
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
         this.nombre = nombre;
         this.prioridad = prioridad;
-        this.estado = estado;
+        Mision.estado = estado;
         this.tipo = MissionType.EXPLORACION;
         ExperienciaTipo experiencia = ExperienciaTipo.CIENTIFICA;
         this.duracion = 0;
@@ -31,8 +31,14 @@ public class MisionExploracion extends Mision{
                 System.out.println("***ERROR***\nLa misión no puede durar tan poco!!!");
             }
         }while(duracion<8);
-        System.out.println("Indica la cantidad de experiencia de exploración que necesita: ");
-        int cantidadXP = scanner.nextInt();
+        int cantidadXP =0;
+        do{
+            System.out.println("Indica la cantidad de experiencia de exploración que necesitas: ");
+            cantidadXP = scanner.nextInt();
+            if(cantidadXP<0){
+                System.out.println("***ERROR***\n La experiéncia de la misión no puede ser negativa!!!");
+            }
+        }while(cantidadXP<0);
 
         setExperiencia(experiencia, cantidadXP);
     }

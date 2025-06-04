@@ -45,13 +45,13 @@ public class Main {
                    // simularCiclo();
                 break;
                 case 4:
-                  //  mostrarEstado();
+                  NavesEspaciales.mostrarEstado();
                 break;
                 case 5:
-                  //  buscarMisiones();
+                  Mision.buscarMisiones();
                 break;
                 case 6:
-                  //  generarRanking();
+                   NavesEspaciales.generarRanking();
                 break;
                 case 7:
                     System.out.println("Adios!");
