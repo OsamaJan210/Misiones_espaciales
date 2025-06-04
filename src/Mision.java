@@ -74,6 +74,27 @@ public abstract class Mision{
         misiones.add(mision);
         return mision;
     }
+
+    public static Mision buscarMisiones(){
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese el nombre de la misión a buscar: ");
+        String nombreMision = scanner.nextLine();
+
+        for (Mision m : misiones){
+            System.out.println("Nombre mision: "+m.getNombre());
+            if (m.getNombre().equalsIgnoreCase(nombreMision)){
+                System.out.println("Misión encontrada: ");
+                m.logMision();
+                return m;
+            }
+        }
+
+        System.out.println("No se encontró ninguna misión con ese nombre.");
+        return null;
+
+    }
+
     public static void logMisiones(){
         System.out.println("*****MISIONES*****");
         for (Mision misiones : misiones){
