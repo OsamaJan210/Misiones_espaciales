@@ -27,5 +27,4 @@ public class MisionExploracion extends Mision{
 
         scanner.close();
     }
-    
 }
