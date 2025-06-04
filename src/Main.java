@@ -39,10 +39,10 @@ public class Main {
                    // simularCiclo();
                 break;
                 case 4:
-                    NavesEspaciales.mostrarEstado();
+                  NavesEspaciales.mostrarEstado();
                 break;
                 case 5:
-                   Mision.buscarMisiones();
+                  Mision.buscarMisiones();
                 break;
                 case 6:
                   //  generarRanking();
