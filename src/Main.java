@@ -45,7 +45,7 @@ public class Main {
                   Mision.buscarMisiones();
                 break;
                 case 6:
-                  //  generarRanking();
+                   NavesEspaciales.generarRanking();
                 break;
                 case 7:
                     System.out.println("Adios!");

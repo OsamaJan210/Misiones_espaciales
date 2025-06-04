@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -78,6 +79,15 @@ public class NavesEspaciales {
             System.out.printf("- %s: Total: %d | Científica: %d | Técnica: %d | \n",
                     nave.getNombre(), nave.getExperienciaTotal(), nave.getExperienciaCientifica(),nave.getExperienciaTecnica());
             System.out.printf("Estratégica: %d\n", nave.getExperienciaEstrategica());
+        }
+
+
+    }
+    public static void generarRanking(){
+        System.out.println("== Ranking ==");
+        naves.sort(Comparator.comparingInt(NavesEspaciales::getExperienciaTotal));
+        for(NavesEspaciales nave : naves){
+            System.out.println("- Nombre: " + nave.getNombre());
         }
 
 
