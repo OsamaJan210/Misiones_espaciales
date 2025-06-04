@@ -39,7 +39,7 @@ public class Main {
                    // simularCiclo();
                 break;
                 case 4:
-                  //  mostrarEstado();
+                    NavesEspaciales.mostrarEstado();
                 break;
                 case 5:
                   Mision.buscarMisiones();

@@ -47,8 +47,8 @@ public class NavesEspaciales {
         System.out.println("¿Sensores cientificos? (true/false) ");
         boolean sensoresCientificos = scanner.nextBoolean();
 
-        System.out.println("Experiencia total: ");
-        int experienciaTotal = scanner.nextInt();
+//        System.out.println("Experiencia total: ");
+//        int experienciaTotal = scanner.nextInt();
 
         System.out.println("Experiencia técnica: ");
         int experienciaTecnica = scanner.nextInt();
@@ -60,6 +60,7 @@ public class NavesEspaciales {
         int experienciaEstrategica = scanner.nextInt();
         scanner.nextLine();
 
+        int experienciaTotal=experienciaTecnica+experienciaCientifica+experienciaEstrategica;
         NavesEspaciales nave = new NavesEspaciales(nombre, autonomiaMaxima, autonomiaActual,
         capacidadCarga, sensoresCientificos, experienciaTotal, experienciaTecnica,
         experienciaCientifica, experienciaEstrategica);
@@ -68,6 +69,18 @@ public class NavesEspaciales {
         System.out.println("Nave registrada exitosamente.");
 
         return nave;
+    }
+
+    public static void mostrarEstado(){
+        System.out.println("== Estadísticas de naves ==");
+        for(NavesEspaciales nave : naves){
+
+            System.out.printf("- %s: Total: %d | Científica: %d | Técnica: %d | \n",
+                    nave.getNombre(), nave.getExperienciaTotal(), nave.getExperienciaCientifica(),nave.getExperienciaTecnica());
+            System.out.printf("Estratégica: %d\n", nave.getExperienciaEstrategica());
+        }
+
+
     }
     public String getNombre() {
         return nombre;
@@ -113,5 +126,20 @@ public class NavesEspaciales {
     }
     public void logNave(){
         System.out.println("\nNombre: "+this.nombre+"\nAutonomia máxima: "+this.autonomiaMaxima+"\nAutonomia actual: "+this.autonomiaActual+"\nCapacidad de carga: "+this.capacidadCarga+"\nSensores cientificos: "+this.sensoresCientificos+"\nExperiencia total: "+this.experienciaTotal+"\nExperiencia técnica: "+this.experienciaTecnica+"\nExperiencia científica: "+this.experienciaCientifica+"\nExperiencia estratégica: "+this.experienciaEstrategica);
+    }
+
+    @Override
+    public String toString() {
+        return "NavesEspaciales{" +
+                "nombre='" + nombre + '\'' +
+                ", autonomiaMaxima=" + autonomiaMaxima +
+                ", autonomiaActual=" + autonomiaActual +
+                ", capacidadCarga=" + capacidadCarga +
+                ", sensoresCientificos=" + sensoresCientificos +
+                ", experienciaTotal=" + experienciaTotal +
+                ", experienciaTecnica=" + experienciaTecnica +
+                ", experienciaCientifica=" + experienciaCientifica +
+                ", experienciaEstrategica=" + experienciaEstrategica +
+                '}';
     }
 }
