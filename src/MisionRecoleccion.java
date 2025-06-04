@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 import enums.ExperienciaTipo;
+import enums.MissionStatus;
 import enums.MissionType;
 
 public class MisionRecoleccion extends Mision{
@@ -16,12 +17,16 @@ public class MisionRecoleccion extends Mision{
     }
 
     @Override
-    public void acabarDeRegistrarDatos(){
-        MissionType tipo = MissionType.RECOLECCION_DATOS;
+    public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
+        this.nombre = nombre;
+        this.prioridad = prioridad;
+        this.estado = estado;
+        this.tipo = MissionType.RECOLECCION_DATOS;
         ExperienciaTipo experiencia = ExperienciaTipo.TECNICA;
+        this.duracion =0;
         do{
             System.out.println("Indica la duración de la mision de Recolección de datos (Entre 4h y 8h): ");
-            int duracion = scanner.nextInt();
+            duracion = scanner.nextInt();
             if(duracion<4){
                 System.out.println("***ERROR***\nLa misión no puede durar tan poco!!!");
             }
@@ -33,7 +38,5 @@ public class MisionRecoleccion extends Mision{
         int cantidadXP = scanner.nextInt();
 
         setExperiencia(experiencia, cantidadXP);
-
-        scanner.close();
     }
 }

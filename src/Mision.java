@@ -13,7 +13,7 @@ public abstract class Mision{
     protected String nombre;
     protected int duracion;
     protected int prioridad;
-    protected MissionStatus estado;
+    protected static MissionStatus estado;
     protected MissionType tipo;
     protected EnumMap<ExperienciaTipo, Integer> experienciaRequerida = new EnumMap<>(ExperienciaTipo.class);
 
@@ -46,7 +46,7 @@ public abstract class Mision{
     public int getPrioridad() {
         return prioridad;
     }
-    public abstract void acabarDeRegistrarDatos();
+    public abstract void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado);
 
     public static Mision registrarMision(){
         Scanner scanner = new Scanner(System.in);
@@ -67,7 +67,7 @@ public abstract class Mision{
         else{
             mision = new MisionRecoleccion(nombre, prioridad);
         }
-        mision.acabarDeRegistrarDatos();
+        mision.acabarDeRegistrarDatos(nombre, prioridad, estado);
         scanner.nextLine();
 
         System.out.println("\nMision añadida correctamente\n");
@@ -81,6 +81,6 @@ public abstract class Mision{
         }
     }
     public void logMision(){
-        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado);
+        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
     }
 }
