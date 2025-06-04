@@ -10,7 +10,13 @@ public class Main {
     public static void main(String[] args) {
         List<NavesEspaciales> naves = new ArrayList<>();
         List<Mision> misiones = new ArrayList<>();
-        
+
+        Simulacion simulacion = new Simulacion();
+        simulacion.iniciar();
+
+
+
+
         Scanner scanner = new Scanner(System.in);
 
         NavesEspaciales nave1 = new NavesEspaciales("Omega", 1500, 1500, 700, true,0,0,0,0);

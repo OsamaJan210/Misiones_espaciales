@@ -7,6 +7,7 @@ import enums.ExperienciaTipo;
 import enums.MissionStatus;
 import enums.MissionType;
 
+
 public abstract class Mision{
 
     static List<Mision> misiones = new ArrayList<>();
@@ -84,3 +85,4 @@ public abstract class Mision{
         System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
     }
 }
+

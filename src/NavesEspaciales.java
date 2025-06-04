@@ -114,4 +114,8 @@ public class NavesEspaciales {
     public void logNave(){
         System.out.println("\nNombre: "+this.nombre+"\nAutonomia máxima: "+this.autonomiaMaxima+"\nAutonomia actual: "+this.autonomiaActual+"\nCapacidad de carga: "+this.capacidadCarga+"\nSensores cientificos: "+this.sensoresCientificos+"\nExperiencia total: "+this.experienciaTotal+"\nExperiencia técnica: "+this.experienciaTecnica+"\nExperiencia científica: "+this.experienciaCientifica+"\nExperiencia estratégica: "+this.experienciaEstrategica);
     }
+
+    public static List<NavesEspaciales> getNaves() {
+        return naves;
+    }
 }
