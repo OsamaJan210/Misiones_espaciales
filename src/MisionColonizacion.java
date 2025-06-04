@@ -10,6 +10,9 @@ public class MisionColonizacion extends Mision{
     public MisionColonizacion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP) {
 
         super(nombre,prioridad);
+        this.duracion = duracion;
+        this.tipo = tipo;
+        this.setExperiencia(experienciaTipo, cantidadXP);
     }
 
     public MisionColonizacion(String nombre, int prioridad){

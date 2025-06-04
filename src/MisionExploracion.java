@@ -8,8 +8,10 @@ public class MisionExploracion extends Mision{
     Scanner scanner = new Scanner(System.in);
 
     public MisionExploracion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP) {
-
         super(nombre,prioridad);
+        this.duracion = duracion;
+        this.tipo = tipo;
+        this.setExperiencia(experienciaTipo, cantidadXP);
     }
 
     public MisionExploracion(String nombre, int prioridad){

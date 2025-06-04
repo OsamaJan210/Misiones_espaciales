@@ -127,13 +127,29 @@ public abstract class Mision{
     }
 
     public static void logMisiones(){
-        System.out.println("*****MISIONES*****");
+        System.out.println("\n*****MISIONES*****");
         for (Mision misiones : misiones){
             misiones.logMision();
         }
     }
     public void logMision(){
         System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+Mision.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
+    }
+
+    public static void generarMisiones() {
+        Mision mision1 = new MisionExploracion("Mision Exploracion", 2, 10, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 4);
+        Mision mision2 = new MisionExploracion("Mision Exploracion 2", 4, 20, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 1);
+        Mision mision3 = new MisionExploracion("Mision Colonización", 1, 40, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 5);
+        Mision mision4 = new MisionExploracion("Mision Colonización 2", 3, 5, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 2);
+        Mision mision5 = new MisionExploracion("Mision Recolección de datos", 5, 15, MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, 4);
+        Mision mision6 = new MisionExploracion("Mision Recolección de datos 2", 6, 15, MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, 1);
+
+        misiones.add(mision1);
+        misiones.add(mision2);
+        misiones.add(mision3);
+        misiones.add(mision4);
+        misiones.add(mision5);
+        misiones.add(mision6);
     }
 }
 

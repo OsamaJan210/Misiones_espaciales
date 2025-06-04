@@ -10,6 +10,9 @@ public class MisionRecoleccion extends Mision{
     public MisionRecoleccion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP) {
 
         super(nombre,prioridad);
+        this.duracion = duracion;
+        this.tipo = tipo;
+        this.setExperiencia(experienciaTipo, cantidadXP);
     }
 
     public MisionRecoleccion(String nombre, int prioridad){

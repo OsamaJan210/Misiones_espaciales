@@ -42,7 +42,7 @@ public class Simulacion {
     }
 
     private void mostrarMenu() {
-        System.out.println("\n***** Bienvenido al Simulador Espacial *****");
+        System.out.println("\n***** Bienvenido al Simuladoaaar Espacial *****");
         System.out.println("1) Registrar Misión");
         System.out.println("2) Registrar Nave");
         System.out.println("3) Simular un ciclo");

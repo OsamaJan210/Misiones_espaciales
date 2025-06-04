@@ -151,7 +151,7 @@ public class NavesEspaciales {
     }
 
     public static void logNaves(){
-        System.out.println("******NAVES*****");
+        System.out.println("\n******NAVES*****");
         for (NavesEspaciales naves : naves){
             naves.logNave();
         }
@@ -177,5 +177,15 @@ public class NavesEspaciales {
 
     public static List<NavesEspaciales> getNaves() {
         return naves;
+    }
+
+    public static void generarNaves() {
+        NavesEspaciales nave1 = new NavesEspaciales("Omega", 1500, 1500, 700, true,5,2,1,2);
+        NavesEspaciales nave2 = new NavesEspaciales("Alpha", 900, 900, 600, true,10,2,5,3);
+        NavesEspaciales nave3 = new NavesEspaciales("Beta", 1200, 1200, 400, true,12,10,0,2);
+
+        naves.add(nave1);
+        naves.add(nave2);
+        naves.add(nave3);
     }
 }
