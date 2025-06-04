@@ -85,7 +85,7 @@ public class NavesEspaciales {
     }
     public static void generarRanking(){
         System.out.println("== Ranking ==");
-        naves.sort(Comparator.comparingInt(NavesEspaciales::getExperienciaTotal));
+        naves.sort(Comparator.comparingInt(NavesEspaciales::getExperienciaTotal).reversed());
         for(NavesEspaciales nave : naves){
             System.out.println("- Nombre: " + nave.getNombre());
         }
