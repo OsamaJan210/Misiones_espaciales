@@ -7,6 +7,7 @@ import enums.MissionType;
 public class MisionExploracion extends Mision{
     Scanner scanner = new Scanner(System.in);
     int autonomiaMision = 1000;
+    int cantidadXP = 0;
 
     public MisionExploracion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, int autonomiaMision) {
         super(nombre,prioridad);
@@ -24,6 +25,10 @@ public class MisionExploracion extends Mision{
         return this.autonomiaMision;
     }
 
+    public int getXP(){
+        return cantidadXP;
+    }
+    
     @Override
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
         this.nombre = nombre;
@@ -46,10 +51,9 @@ public class MisionExploracion extends Mision{
                 System.out.println("***ERROR***\nLa misión no puede durar tan poco!!!");
             }
         }while(duracion<8);
-        int cantidadXP =0;
         do{
             System.out.println("Indica la cantidad de experiencia de exploración que necesitas: ");
-            cantidadXP = scanner.nextInt();
+            this.cantidadXP = scanner.nextInt();
             if(cantidadXP<0){
                 System.out.println("***ERROR***\n La experiéncia de la misión no puede ser negativa!!!");
             }

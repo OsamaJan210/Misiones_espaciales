@@ -27,6 +27,10 @@ public abstract class Mision{
         this.estado = MissionStatus.PENDIENTE;
     }
 
+    public MissionStatus getStatus(){
+        return estado;
+    }
+
     public String getNombre() {
         return nombre;
     }

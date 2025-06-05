@@ -1,55 +1,65 @@
-import java.util.Scanner;
+import java.util.List;
+
+import enums.MissionStatus;
+import enums.MissionType;
 
 public class Simulacion {
 
-    private Scanner scanner = new Scanner(System.in);
+    static List<Mision> misionesPendientes;
+    static List<NavesEspaciales> navesAptas;
 
-    public void iniciar() {
-        int opcion;
-        do {
-            mostrarMenu();
-            opcion = scanner.nextInt();
-            scanner.nextLine(); // limpiar buffer
+    public static void simularCiclo() {
+        int contador=0;
+        for(Mision mision : misiones){
+            if(mision.getStatus()==MissionStatus.PENDIENTE) contador ++;
+        }
+        System.out.println("Misiones pendientes: "+ contador);
 
-            switch (opcion) {
-                case 1:
-                   // Mision.registrarMision();
-                    break;
-                case 2:
-                 //   NavesEspaciales.registrarNave();
-                    break;
-                case 3:
-                    // simularCiclo();
-                    break;
-                case 4:
-                    Mision.logMisiones();
-                    NavesEspaciales.logNaves();
-                    break;
-                case 5:
-                    // buscarMisiones();
-                    break;
-                case 6:
-                    // generarRanking();
-                    break;
-                case 7:
-                    System.out.println("¡Adiós!");
-                    break;
-                default:
-                    System.out.println("Opción inválida.");
+        int contador2=0;
+        for(NavesEspaciales nave : naves){
+            contador2++;
+        }
+        System.out.println("Naves disponibles: "+ contador2);
+
+        for(Mision mision: misiones){
+            if(mision.getStatus()==MissionStatus.PENDIENTE){
+                misionesPendientes.add(mision);
+            }
+        }
+        misionesPendientes.sort(mision.getPrioridad);
+        System.out.println("Evaluando misión: ");
+        for(Mision mision : misionesPendientes){
+            System.out.println(mision.getNombre()+" [prioridad: "+mision.getPrioridad()+"]\nRequiere: ");
+            if(mision.MissionType==MissionType.COLONIZACION){
+                System.out.println("carga>="+MisionColonizacion.getCarga()+", experiencia estratégica>= "+MisionColonizacion.getXP());
+            }
+            else if(mision.MissionType==MissionType.EXPLORACION){
+                System.out.println("autonomía>="+MisionExploracion.getAutonomia()+", experiencia científica>= "+MisionExploracion.getXP());
+            }
+            else{
+                System.out.println("sensores científicos = true, experiencia técnica >="+MisionRecoleccion.getXP());
             }
 
-        } while (opcion != 7);
-    }
-
-    private void mostrarMenu() {
-        System.out.println("\n***** Bienvenido al Simuladoaaar Espacial *****");
-        System.out.println("1) Registrar Misión");
-        System.out.println("2) Registrar Nave");
-        System.out.println("3) Simular un ciclo");
-        System.out.println("4) Mostrar estado general");
-        System.out.println("5) Buscar misión");
-        System.out.println("6) Ranking de naves");
-        System.out.println("7) Salir");
-        System.out.print("Elige una opción: ");
+            for(NavesEspaciales nave : naves){
+                if(mision.MissionType==MissionType.COLONIZACION){
+                    if(nave.getCapacidadCarga()>=MisionColonizacion.getCarga() && nave.getExperienciaEstrategica()>= MisionColonizacion.getXP()){
+                        navesAptas.add(nave);
+                        naves.remove(nave);
+                    }
+                    else if(nave.getAutonomiaActual()>=MisionExploracion.getAutonomia() && nave.getExperienciaCientifica()>= MisionExploracion.getXP()){
+                        navesAptas.add(nave);
+                        naves.remove(nave);
+                    }
+                    else if(nave.tieneSensoresCientificos()==true && nave.getExperienciaTecnica()>= MisionRecoleccion.getXP()){
+                        navesAptas.add(nave);
+                        naves.remove(nave);
+                    }
+                    else{
+                        System.out.println("No hay naves aptas para esta misión");
+                    }
+                }
+            }
+        }
     }
 }
+

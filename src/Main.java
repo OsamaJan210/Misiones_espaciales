@@ -29,7 +29,7 @@ public class Main {
                   NavesEspaciales.registrarNave(scanner);
                 break;
                 case 3:
-                  //  simularCiclo();
+                  Simulacion.simularCiclo();
                 break;
                 case 4:
                   NavesEspaciales.mostrarEstado();
