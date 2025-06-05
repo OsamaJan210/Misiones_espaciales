@@ -32,9 +32,7 @@ public class NavesEspaciales {
 
     }
 
-    public static NavesEspaciales registrarNave(){
-
-        Scanner scanner = new Scanner(System.in);
+    public static NavesEspaciales registrarNave(Scanner scanner){
 
         System.out.println("Nombre de la nave: ");
         String nombre = scanner.nextLine();
@@ -175,7 +173,11 @@ public class NavesEspaciales {
         }
     }
 
-    public static void generarNavesEjemplo() {
+    public static List<NavesEspaciales> getNaves() {
+        return naves;
+    }
+
+    public static void generarNaves() {
     naves.add(new NavesEspaciales("Omega", 1500, 1500, 700, true, 2, 1, 2));
     naves.add(new NavesEspaciales("Alpha", 900, 900, 600, true, 2, 5, 3));
     naves.add(new NavesEspaciales("Beta", 1200, 1200, 400, true, 10, 0, 2));
