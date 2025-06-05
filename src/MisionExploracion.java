@@ -6,11 +6,13 @@ import enums.MissionType;
 
 public class MisionExploracion extends Mision{
     Scanner scanner = new Scanner(System.in);
+    int autonomiaMision = 1000;
 
-    public MisionExploracion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP) {
+    public MisionExploracion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, int autonomiaMision) {
         super(nombre,prioridad);
         this.duracion = duracion;
         this.tipo = tipo;
+        this.autonomiaMision = autonomiaMision;
         this.setExperiencia(experienciaTipo, cantidadXP);
     }
 
@@ -18,13 +20,24 @@ public class MisionExploracion extends Mision{
 
     }
 
+    public int getAutonomia(){
+        return this.autonomiaMision;
+    }
+
     @Override
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
         this.nombre = nombre;
         this.prioridad = prioridad;
-        Mision.estado = estado;
+        this.estado = MissionStatus.PENDIENTE;
         this.tipo = MissionType.EXPLORACION;
         ExperienciaTipo experiencia = ExperienciaTipo.CIENTIFICA;
+        do{
+            System.out.println("Indica la cantidad de autonomía que necesitaría la misión: ");
+            this.autonomiaMision = scanner.nextInt();
+            if(autonomiaMision<0){
+                System.out.println("***ERROR***\nLa autonomía no puede ser inferior a 0!!!");
+            }
+        }while(autonomiaMision<0);
         this.duracion = 0;
         do{
             System.out.println("Indica la duración de la mision de Exploración (Mínimo 8h): ");

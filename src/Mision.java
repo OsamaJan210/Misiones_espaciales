@@ -14,7 +14,7 @@ public abstract class Mision{
     protected String nombre;
     protected int duracion;
     protected int prioridad;
-    protected static MissionStatus estado;
+    protected MissionStatus estado;
     protected MissionType tipo;
     protected EnumMap<ExperienciaTipo, Integer> experienciaRequerida = new EnumMap<>(ExperienciaTipo.class);
 
@@ -24,7 +24,7 @@ public abstract class Mision{
     public Mision(String nombre, int prioridad) {
         this.nombre = nombre;
         this.prioridad = prioridad;
-        Mision.estado = MissionStatus.PENDIENTE;
+        this.estado = MissionStatus.PENDIENTE;
     }
 
     public String getNombre() {
@@ -50,6 +50,7 @@ public abstract class Mision{
     public abstract void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado);
 
     public static Mision registrarMision(Scanner scanner){
+        scanner.nextLine();
         boolean nombreExistente = false;
         boolean prioridadExistente = false;
         boolean misionValida = true;
@@ -97,7 +98,7 @@ public abstract class Mision{
         else{
             mision = new MisionRecoleccion(nombre, prioridad);
         }
-        mision.acabarDeRegistrarDatos(nombre, prioridad, estado);
+        mision.acabarDeRegistrarDatos(nombre, prioridad, mision.estado);
         scanner.nextLine();
 
         System.out.println("\nMision añadida correctamente\n");
@@ -131,16 +132,16 @@ public abstract class Mision{
         }
     }
     public void logMision(){
-        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+Mision.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
+        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
     }
 
     public static void generarMisiones() {
-        Mision mision1 = new MisionExploracion("Mision Exploracion", 2, 10, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 4);
-        Mision mision2 = new MisionExploracion("Mision Exploracion 2", 4, 20, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 1);
-        Mision mision3 = new MisionExploracion("Mision Colonización", 1, 40, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 5);
-        Mision mision4 = new MisionExploracion("Mision Colonización 2", 3, 5, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 2);
-        Mision mision5 = new MisionExploracion("Mision Recolección de datos", 5, 15, MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, 4);
-        Mision mision6 = new MisionExploracion("Mision Recolección de datos 2", 6, 15, MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, 1);
+        Mision mision1 = new MisionExploracion("Mision Exploracion", 2, 10, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 4, 500);
+        Mision mision2 = new MisionExploracion("Mision Exploracion 2", 4, 20, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 1, 500);
+        Mision mision3 = new MisionColonizacion("Mision Colonización", 1, 40, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 5, 1000);
+        Mision mision4 = new MisionColonizacion("Mision Colonización 2", 3, 5, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 2, 1000);
+        Mision mision5 = new MisionRecoleccion("Mision Recolección de datos", 5, 15, MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, 4, true);
+        Mision mision6 = new MisionRecoleccion("Mision Recolección de datos 2", 6, 15, MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, 1, true);
 
         misiones.add(mision1);
         misiones.add(mision2);
@@ -148,6 +149,21 @@ public abstract class Mision{
         misiones.add(mision4);
         misiones.add(mision5);
         misiones.add(mision6);
+    }
+
+    //Test de instanseof
+    public static Mision test() {
+        for(Mision m : misiones){
+            if(m instanceof MisionColonizacion){
+                MisionColonizacion recolectar = (MisionColonizacion) m;
+                System.out.println("***Misión Colonización: "+m.getNombre()+", carga: "+recolectar.getCarga());
+            }
+            if(m instanceof MisionExploracion){
+                MisionExploracion recolectar = (MisionExploracion) m;
+                System.out.println("***Misión Exploración: "+m.getNombre()+", autonomía: "+recolectar.getAutonomia());
+            }
+        }
+        return null;
     }
 }
 

@@ -7,11 +7,12 @@ import enums.MissionType;
 public class MisionRecoleccion extends Mision{
     Scanner scanner = new Scanner(System.in);
 
-    public MisionRecoleccion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP) {
+    public MisionRecoleccion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, boolean requiereCientifico) {
 
         super(nombre,prioridad);
         this.duracion = duracion;
         this.tipo = tipo;
+        requiereCientifico = true;
         this.setExperiencia(experienciaTipo, cantidadXP);
     }
 
@@ -23,7 +24,7 @@ public class MisionRecoleccion extends Mision{
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
         this.nombre = nombre;
         this.prioridad = prioridad;
-        Mision.estado = estado;
+        this.estado = MissionStatus.PENDIENTE;
         this.tipo = MissionType.RECOLECCION_DATOS;
         ExperienciaTipo experiencia = ExperienciaTipo.TECNICA;
         this.duracion =0;

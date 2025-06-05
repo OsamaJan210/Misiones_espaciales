@@ -6,26 +6,39 @@ import enums.MissionType;
 
 public class MisionColonizacion extends Mision{
     Scanner scanner = new Scanner(System.in);
+    int carga = 500;
 
-    public MisionColonizacion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP) {
+    public MisionColonizacion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, int carga) {
 
         super(nombre,prioridad);
         this.duracion = duracion;
         this.tipo = tipo;
         this.setExperiencia(experienciaTipo, cantidadXP);
+        this.carga = carga;
     }
 
     public MisionColonizacion(String nombre, int prioridad){
 
     }
 
+    public int getCarga() {
+        return carga;
+    }
+
     @Override
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
         this.nombre = nombre;
         this.prioridad = prioridad;
-        Mision.estado = estado;
+        this.estado = MissionStatus.PENDIENTE;
         this.tipo = MissionType.COLONIZACION;
         ExperienciaTipo experiencia = ExperienciaTipo.ESTRATEGICA;
+        do{
+            System.out.println("Indica la cantidad de carga que necesitaría la misión: ");
+            this.carga = scanner.nextInt();
+            if(carga<0){
+                System.out.println("***ERROR***\nLa carga no puede ser inferior a 0!!!");
+            }
+        }while(carga<0);
         this.duracion =0;
          do{
             System.out.println("Indica la duración de la mision de Colonización (Mínimo 6h): ");

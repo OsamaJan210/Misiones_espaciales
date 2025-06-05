@@ -17,7 +17,9 @@ public class Main {
             "5)Buscar Mision\n"+
             "6)Ranking de naves\n"+
             "7)Generar Naves y misiones\n"+
-            "8)Salir");
+            "8)Listar Naves y misiones\n"+
+            "9)Salir\n"+
+            "10)Tests temporales");
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
@@ -44,16 +46,18 @@ public class Main {
                   System.out.println("\nNaves y Misiones generados correctamente\n");
                 break;
                 case 8:
+                  Mision.logMisiones();
+                  NavesEspaciales.logNaves();
+                break;
+                case 9:
                   System.out.println("Adios!");
                 break;
-
-                //Crear caso de logs de Misiones y naves --> Mover líneas 56 y 57 como opción 
+                case 10:
+                  Mision.test();
+                break;
 
             }
-        }while (opcion!=8);
+        }while (opcion!=9);
         scanner.close();
-        //Logs para verificar el funcionamiento
-        Mision.logMisiones();
-        NavesEspaciales.logNaves();
         }
 }
