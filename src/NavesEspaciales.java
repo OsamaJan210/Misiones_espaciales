@@ -7,29 +7,34 @@ public class NavesEspaciales {
     
     private static List<NavesEspaciales> naves = new ArrayList<>();
 
-    private String nombre;
-    private int autonomiaMaxima;
-    private int autonomiaActual;
-    private int capacidadCarga;
-    private boolean sensoresCientificos;
-    private int experienciaTotal;
-    private int experienciaTecnica;
-    private int experienciaCientifica;
-    private int experienciaEstrategica;
+    //Ya que no se van a cambiar ni hacer override les ponemos final
 
-    public NavesEspaciales(String nombre, int autonomiaMaxima, int autonomiaActual, int capacidadCarga, boolean sensoresCientificos, int experienciaTotal, int experienciaTecnica, int experienciaCientifica, int experienciaEstrategica) {
+    private final String nombre;
+    private final int autonomiaMaxima;
+    private final int autonomiaActual;
+    private final int capacidadCarga;
+    private final boolean sensoresCientificos;
+    private final int experienciaTecnica;
+    private final int experienciaCientifica;
+    private final int experienciaEstrategica;
+    private final int experienciaTotal;
+
+    public NavesEspaciales(String nombre, int autonomiaMaxima, int autonomiaActual, int capacidadCarga, boolean sensoresCientificos,  int experienciaTecnica, int experienciaCientifica, int experienciaEstrategica) {
         this.nombre = nombre;
         this.autonomiaMaxima = autonomiaMaxima;
         this.autonomiaActual = autonomiaActual;
         this.capacidadCarga = capacidadCarga;
         this.sensoresCientificos = sensoresCientificos;
-        this.experienciaTotal = experienciaTotal;
         this.experienciaTecnica = experienciaTecnica;
         this.experienciaCientifica = experienciaCientifica;
         this.experienciaEstrategica = experienciaEstrategica;
+        this.experienciaTotal = experienciaTecnica + experienciaCientifica + experienciaEstrategica;
+
     }
 
-    public static NavesEspaciales registrarNave(Scanner scanner){
+    public static NavesEspaciales registrarNave(){
+
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Nombre de la nave: ");
         String nombre = scanner.nextLine();
@@ -42,48 +47,30 @@ public class NavesEspaciales {
             }
         }
         if (nombreNaveExiste) {
-            System.out.println("Error: Ya existe una nove con ese nombre. Registro de nave cancelado.");
+            System.out.println("Error: Ya existe una nave con ese nombre. Registro de nave cancelado.");
             return null;
         }
 
-        System.out.println("Autonomia máxima: ");
-        int autonomiaMaxima = scanner.nextInt();
-
-        System.out.println("Autonomia actual: ");
-        int autonomiaActual = scanner.nextInt();
-
-        System.out.println("Capacidad de carga: ");
-        int capacidadCarga = scanner.nextInt();
-
-        if (autonomiaMaxima <= 0 || autonomiaActual <= 0 || capacidadCarga <= 0){
-            System.out.println("Error: La autonomia y carga deben ser valores mayores que 0. Registro cancelado.");
-            return null;
-        }
+        int autonomiaMaxima = leerEntero(scanner, "Autonomía máxima: ", 1);
+        int autonomiaActual = leerEntero(scanner, "Autonomía actual: ", 0);
 
         if (autonomiaActual > autonomiaMaxima){
             System.out.println("Error: La autonomía actual no puede ser superior a la máxima. Registro cancelado.");
             return null;
         }
 
+        int capacidadCarga = leerEntero(scanner, "Capacidad de carga: ", 1);
+
         System.out.println("¿Sensores cientificos? (true/false) ");
         boolean sensoresCientificos = scanner.nextBoolean();
 
-//        System.out.println("Experiencia total: ");
-//        int experienciaTotal = scanner.nextInt();
-
-        System.out.println("Experiencia técnica: ");
-        int experienciaTecnica = scanner.nextInt();
-
-        System.out.println("Experiencia cientifica: ");
-        int experienciaCientifica = scanner.nextInt();
-
-        System.out.println("Experiencia estratégica: ");
-        int experienciaEstrategica = scanner.nextInt();
+        int experienciaTecnica = leerEntero(scanner, "Experiencia técnica: ", 0);
+        int experienciaCientifica = leerEntero(scanner, "Experiencia científica: ", 0);
+        int experienciaEstrategica = leerEntero(scanner, "Experiencia estratégica: ", 0);
         scanner.nextLine();
-
-        int experienciaTotal=experienciaTecnica+experienciaCientifica+experienciaEstrategica;
+        
         NavesEspaciales nave = new NavesEspaciales(nombre, autonomiaMaxima, autonomiaActual,
-        capacidadCarga, sensoresCientificos, experienciaTotal, experienciaTecnica,
+        capacidadCarga, sensoresCientificos, experienciaTecnica,
         experienciaCientifica, experienciaEstrategica);
 
         naves.add(nave);
@@ -107,7 +94,7 @@ public class NavesEspaciales {
         System.out.println("== Ranking ==");
         naves.sort(Comparator.comparingInt(NavesEspaciales::getExperienciaTotal).reversed());
         for(NavesEspaciales nave : naves){
-            System.out.println("- Nombre: " + nave.getNombre()+"- Experiencia total: "+ nave.getExperienciaTotal());
+            System.out.println("- Nombre: " + nave.getNombre());
         }
 
 
@@ -149,15 +136,51 @@ public class NavesEspaciales {
     }
 
     public static void logNaves(){
-        System.out.println("\n******NAVES*****");
+        System.out.println("******NAVES*****");
         for (NavesEspaciales naves : naves){
             naves.logNave();
         }
     }
-    public void logNave(){
-        System.out.println("\nNombre: "+this.nombre+"\nAutonomia máxima: "+this.autonomiaMaxima+"\nAutonomia actual: "+this.autonomiaActual+"\nCapacidad de carga: "+this.capacidadCarga+"\nSensores cientificos: "+this.sensoresCientificos+"\nExperiencia total: "+this.experienciaTotal+"\nExperiencia técnica: "+this.experienciaTecnica+"\nExperiencia científica: "+this.experienciaCientifica+"\nExperiencia estratégica: "+this.experienciaEstrategica);
+    public void logNave() {
+        System.out.printf("""
+                
+                Nombre: %s
+                Autonomía máxima: %d
+                Autonomía actual: %d
+                Capacidad de carga: %d
+                Sensores científicos: %s
+                Experiencia total: %d
+                Técnica: %d
+                Científica: %d
+                Estratégica: %d
+                """, nombre, autonomiaMaxima, autonomiaActual, capacidadCarga,
+                sensoresCientificos ? "Sí" : "No", experienciaTotal,
+                experienciaTecnica, experienciaCientifica, experienciaEstrategica);
+    }
+    
+    private static int leerEntero(Scanner scanner, String mensaje, int minimo){
+        int valor;
+        while (true) {
+            System.out.println(mensaje);
+            try{
+                valor = Integer.parseInt(scanner.nextLine());
+                if (valor < minimo) {
+                    System.out.println("Valor inválido, debe ser mayor o igual a "+ minimo + ".");
+                } else{
+                    return valor;
+                }
+            } catch (NumberFormatException e){
+                System.out.println("Entrada inválida: Debes ingresar un número entero: ");
+            }
+        }
     }
 
+    public static void generarNavesEjemplo() {
+    naves.add(new NavesEspaciales("Omega", 1500, 1500, 700, true, 2, 1, 2));
+    naves.add(new NavesEspaciales("Alpha", 900, 900, 600, true, 2, 5, 3));
+    naves.add(new NavesEspaciales("Beta", 1200, 1200, 400, true, 10, 0, 2));
+}
+    
     @Override
     public String toString() {
         return "NavesEspaciales{" +
@@ -171,19 +194,5 @@ public class NavesEspaciales {
                 ", experienciaCientifica=" + experienciaCientifica +
                 ", experienciaEstrategica=" + experienciaEstrategica +
                 '}';
-    }
-
-    public static List<NavesEspaciales> getNaves() {
-        return naves;
-    }
-
-    public static void generarNaves() {
-        NavesEspaciales nave1 = new NavesEspaciales("Omega", 1500, 1500, 700, true,5,2,1,2);
-        NavesEspaciales nave2 = new NavesEspaciales("Alpha", 900, 900, 600, true,10,2,5,3);
-        NavesEspaciales nave3 = new NavesEspaciales("Beta", 1200, 1200, 400, true,12,10,0,2);
-
-        naves.add(nave1);
-        naves.add(nave2);
-        naves.add(nave3);
     }
 }
