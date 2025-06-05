@@ -47,6 +47,8 @@ public class Main {
                   System.out.println("Adios!");
                 break;
 
+                //Crear caso de logs de Misiones y naves --> Mover líneas 56 y 57 como opción 
+
             }
         }while (opcion!=8);
         scanner.close();
