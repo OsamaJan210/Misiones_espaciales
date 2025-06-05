@@ -22,6 +22,10 @@ public class MisionColonizacion extends Mision{
 
     }
 
+    public int getDuracion(){
+        return duracion;
+    }
+    
     public int getCarga() {
         return carga;
     }

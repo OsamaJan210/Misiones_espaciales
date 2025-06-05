@@ -21,6 +21,10 @@ public class MisionRecoleccion extends Mision{
 
     }
 
+    public int getDuracion(){
+        return duracion;
+    }
+
     public int getXP(){
         return cantidadXP;
     }

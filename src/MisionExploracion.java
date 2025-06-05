@@ -25,6 +25,10 @@ public class MisionExploracion extends Mision{
         return this.autonomiaMision;
     }
 
+    public int getDuracion(){
+        return duracion;
+    }
+
     public int getXP(){
         return cantidadXP;
     }

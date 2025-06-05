@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 
 import enums.MissionStatus;
 import enums.MissionType;
@@ -54,20 +55,21 @@ public class Simulacion {
                     navesAptas.add(nave);
                     naves.remove(nave);
                     misionesPendientes.remove(mision);
-                    System.out.println("Nave seleccionada: "+nave.getNombre()+"\nEjecutando misión...\nExperiencia ganada +1 Estratégica\nEvento aleatorio: "+eventoAleatorio()+"\nAutonomía restante: "+(nave.getAutonomiaMaxima()-5));
+                    System.out.println("Nave seleccionada: "+nave.getNombre()+"\nEjecutando misión...\nExperiencia ganada +1 Estratégica\nEvento aleatorio: "+eventoAleatorio()+"\nAutonomía restante: "+(nave.getAutonomiaMaxima()-MisionColonizacion.getDuracion()));
                 }
                 else if(mision.MissionType==MissionType.EXPLORACION){
                     nave.getAutonomiaActual()>=MisionExploracion.getAutonomia() && nave.getExperienciaCientifica()>= MisionExploracion.getXP();
                     navesAptas.add(nave);
                     naves.remove(nave);
                     misionesPendientes.remove(mision);
-                    System.out.println("Nave seleccionada: "+nave.getNombre()+"\nEjecutando misión...\nExperiencia ganada +1 Científica\nEvento aleatorio: "+eventoAleatorio()+"\nAutonomía restante: "+(nave.getAutonomiaMaxima()-5));
+                    System.out.println("Nave seleccionada: "+nave.getNombre()+"\nEjecutando misión...\nExperiencia ganada +1 Científica\nEvento aleatorio: "+eventoAleatorio()+"\nAutonomía restante: "+(nave.getAutonomiaMaxima()-MisionExploracion.getDuracion()));
                 }
                 else if(mision.MissionType==MissionType.RECOLECCION_DATOS){
                     nave.tieneSensoresCientificos()==true && nave.getExperienciaTecnica()>= MisionRecoleccion.getXP();
                     navesAptas.add(nave);
                     naves.remove(nave);
                     misionesPendientes.remove(mision);
+                    System.out.println("Nave seleccionada: "+nave.getNombre()+"\nEjecutando misión...\nExperiencia ganada +1 Técnica\nEvento aleatorio: "+eventoAleatorio()+"\nAutonomía restante: "+(nave.getAutonomiaMaxima()-MisionRecoleccion.getDuracion()));
                 }
                 else{
                         System.out.println("No hay naves aptas para esta misión");
@@ -78,11 +80,20 @@ public class Simulacion {
                 return;
             }
         }
-    }
 
     private static String eventoAleatorio() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eventoAleatorio'");
+        Random random = new Random();
+        int numero = random.nextInt(101);
+        if(numero<=10){
+            return "La misión ha fallado!!!\n no se gana experiencia";
+        }
+        else if(numero>10 && numero<=15){
+            return "Evento de mejora tecnológica!!!\n la nave gana 2 de experiencia extra";
+        }
+        else if(numero>15 && numero<=20){
+            return "Se ha descubierto algo especial!!!";
+        }
+        return "Ninguno";
     }
 }
 
