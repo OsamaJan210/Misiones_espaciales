@@ -34,6 +34,7 @@ public class NavesEspaciales {
 
     public static NavesEspaciales registrarNave(Scanner scanner){
 
+        scanner.nextLine();
         System.out.println("Nombre de la nave: ");
         String nombre = scanner.nextLine();
 
