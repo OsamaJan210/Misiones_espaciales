@@ -1,5 +1,6 @@
 package com.example.proyecto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.File;
@@ -154,12 +155,12 @@ public class App {
     private static void guardarDatos() {
       List<NavesEspaciales> naves = NavesEspaciales.getNaves();
       List<Mision> misiones = Mision.getMisiones();
+      List<App> misionNaves = new ArrayList<>();
       ObjectMapper mapper = new ObjectMapper();
 
       try{
         File jsonFile = new File("Simulador.json");
         mapper.writeValue(jsonFile, misiones);
-        mapper.writeValue(jsonFile, naves);
         System.out.println("Naves y misiones guardadas correctamente en Simulador.json");
       } catch (IOException e){
         e.printStackTrace();
