@@ -10,14 +10,15 @@ public class Main {
             "¿Que deseas hacer?\n\n"+
             "1)Registrar Mision\n"+
             "2)Registar Nave\n"+
-            "3)Simular un ciclo\n"+
-            "4)Mostrar estado general\n"+
-            "5)Buscar Mision\n"+
-            "6)Ranking de naves\n"+
-            "7)Generar Naves y misiones\n"+
-            "8)Listar Naves y misiones\n"+
-            "9)Tests\n"+
-            "10)Salir\n");
+            "3)Borrar Nave\n"+
+            "4)Simular un ciclo\n"+
+            "5)Mostrar estado general\n"+
+            "6)Buscar Mision\n"+
+            "7)Ranking de naves\n"+
+            "8)Generar Naves y misiones\n"+
+            "9)Listar Naves y misiones\n"+
+            "10)Tests\n"+
+            "11)Salir\n");
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
@@ -27,38 +28,41 @@ public class Main {
                   NavesEspaciales.registrarNave(scanner);
                 break;
                 case 3:
-                  Simulacion.simularCiclo();
+                  NavesEspaciales.borrarNave(scanner);
                 break;
                 case 4:
-                  NavesEspaciales.mostrarEstado();
+                  Simulacion.simularCiclo();
                 break;
                 case 5:
-                  Mision.buscarMisiones(scanner);
+                  NavesEspaciales.mostrarEstado();
                 break;
                 case 6:
-                  NavesEspaciales.generarRanking();
+                  Mision.buscarMisiones(scanner);
                 break;
                 case 7:
+                  NavesEspaciales.generarRanking();
+                break;
+                case 8:
                   Mision.generarMisiones();
                   NavesEspaciales.generarNaves();  
                   System.out.println("\nNaves y Misiones generados correctamente\n");
                 break;
-                case 8:
+                case 9:
                   Mision.logMisiones();
                   NavesEspaciales.logNaves();
                 break;
-                case 9:
+                case 10:
                   testRegistroNaveExitosa();
                   expTotalCorrecta();
                   testNaveDuplicada();
                   rankingOrdenaCorrectamente();
                 break;
-                case 10:
+                case 11:
                   System.out.println("Adios!");
                 break;
 
             }
-        }while (opcion!=10);
+        }while (opcion!=11);
         scanner.close();
         }
 
