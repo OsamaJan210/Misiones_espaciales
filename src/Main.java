@@ -9,16 +9,17 @@ public class Main {
             System.out.println("\n*****Bienvenido al simulador espacial*****\n\n"+
             "¿Que deseas hacer?\n\n"+
             "1)Registrar Mision\n"+
-            "2)Registar Nave\n"+
-            "3)Borrar Nave\n"+
-            "4)Simular un ciclo\n"+
-            "5)Mostrar estado general\n"+
-            "6)Buscar Mision\n"+
-            "7)Ranking de naves\n"+
-            "8)Generar Naves y misiones\n"+
-            "9)Listar Naves y misiones\n"+
-            "10)Tests\n"+
-            "11)Salir\n");
+            "2)Borrar misión\n"+
+            "3)Registar Nave\n"+
+            "4)Borrar Nave\n"+
+            "5)Simular un ciclo\n"+
+            "6)Mostrar estado general\n"+
+            "7)Buscar Mision\n"+
+            "8)Ranking de naves\n"+
+            "9)Generar Naves y misiones\n"+
+            "10)Listar Naves y misiones\n"+
+            "11)Tests\n"+
+            "12)Salir\n");
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
@@ -30,12 +31,12 @@ public class Main {
                 case 3:
                   NavesEspaciales.borrarNave(scanner);
                 break;
-                case 5:
-                  NavesEspaciales.mostrarEstado();
-                  Mision.misionesPendientes();
+                case 4:
+                  Simulacion.simularCiclo();
                 break;
                 case 5:
                   NavesEspaciales.mostrarEstado();
+                  Mision.misionesPendientes();
                 break;
                 case 6:
                   Mision.buscarMisiones(scanner);
