@@ -106,7 +106,7 @@ public class Simulacion {
                 nave.setAutonomiaActual(nave.getAutonomiaActual() - ((MisionRecoleccion) mision).getDuracion());
                 break;
         }
-
+        mision.estado  = MissionStatus.COMPLETADA;
         System.out.println("Experiencia ganada +1");
         System.out.println("Autonomía restante: " + nave.getAutonomiaActual());
     }

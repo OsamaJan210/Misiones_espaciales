@@ -31,6 +31,7 @@ public class Main {
                 break;
                 case 4:
                   NavesEspaciales.mostrarEstado();
+                  Mision.misionesPendientes();
                 break;
                 case 5:
                   Mision.buscarMisiones(scanner);

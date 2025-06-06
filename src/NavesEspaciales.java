@@ -86,17 +86,14 @@ public class NavesEspaciales {
                     nave.getNombre(), nave.getExperienciaTotal(), nave.getExperienciaCientifica(),nave.getExperienciaTecnica());
             System.out.printf("Estratégica: %d\n", nave.getExperienciaEstrategica());
         }
-
-
     }
     public static void generarRanking(){
         System.out.println("== Ranking ==");
         naves.sort(Comparator.comparingInt(NavesEspaciales::getExperienciaTotal).reversed());
         for(NavesEspaciales nave : naves){
-            System.out.println("- Nombre: " + nave.getNombre());
+            System.out.println("- Nombre: " + nave.getNombre()+
+            " Total: "+nave.getExperienciaTotal());
         }
-
-
     }
     public String getNombre() {
         return nombre;

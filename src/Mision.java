@@ -179,4 +179,13 @@ public abstract class Mision{
     public MissionType getTipo(){
         return tipo;
     }
+    
+    public static void misionesPendientes(){
+        System.out.println("== Misiones pendientes ==\n");
+        for(Mision m : misiones){
+            if(m.getStatus().equals(MissionStatus.PENDIENTE)){
+                System.out.println("- "+m.getNombre()+"\n");
+            }
+        }
+    }
 }
