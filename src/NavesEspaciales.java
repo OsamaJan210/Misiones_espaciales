@@ -11,13 +11,13 @@ public class NavesEspaciales {
 
     private final String nombre;
     private final int autonomiaMaxima;
-    private final int autonomiaActual;
+    private  int autonomiaActual;
     private final int capacidadCarga;
     private final boolean sensoresCientificos;
-    private final int experienciaTecnica;
-    private final int experienciaCientifica;
-    private final int experienciaEstrategica;
-    private final int experienciaTotal;
+    private  int experienciaTecnica;
+    private  int experienciaCientifica;
+    private  int experienciaEstrategica;
+    private  int experienciaTotal;
 
     public NavesEspaciales(String nombre, int autonomiaMaxima, int autonomiaActual, int capacidadCarga, boolean sensoresCientificos,  int experienciaTecnica, int experienciaCientifica, int experienciaEstrategica) {
         this.nombre = nombre;
@@ -134,6 +134,22 @@ public class NavesEspaciales {
         return experienciaEstrategica;
     }
 
+    public void setAutonomiaActual(int autonomiaActual) {
+        this.autonomiaActual = autonomiaActual;
+    }
+    public void setExperienciaEstrategica(int experienciaEstrategica) {
+        this.experienciaEstrategica = experienciaEstrategica;
+    }
+
+    public void setExperienciaCientifica(int experienciaCientifica) {
+        this.experienciaCientifica = experienciaCientifica;
+    }
+
+    public void setExperienciaTecnica(int experienciaTecnica) {
+        this.experienciaTecnica = experienciaTecnica;
+    }
+
+
     public static void logNaves(){
         System.out.println("******NAVES*****");
         for (NavesEspaciales naves : naves){
@@ -177,7 +193,6 @@ public class NavesEspaciales {
     public static List<NavesEspaciales> getNaves() {
         return naves;
     }
-
     public static void generarNaves() {
     naves.add(new NavesEspaciales("Omega", 1500, 1500, 700, true, 2, 1, 2));
     naves.add(new NavesEspaciales("Alpha", 900, 900, 600, true, 2, 5, 3));

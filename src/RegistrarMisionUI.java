@@ -42,7 +42,7 @@ public class RegistrarMisionUI extends JPanel {
                 }
 
                 mision.acabarDeRegistrarDatos(nombre, prioridad, MissionStatus.PENDIENTE);
-                Mision.misiones.add(mision);
+                Mision.getMisiones().add(mision);
                 lblResultado.setText("✅ Misión registrada correctamente");
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Prioridad debe ser un número.");

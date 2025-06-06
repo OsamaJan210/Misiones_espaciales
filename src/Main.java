@@ -1,13 +1,6 @@
 import java.util.Scanner;
-
-
 public class Main {
     public static void main(String[] args) {
-
-        testRegistroNaveExitosa();
-        expTotalCorrecta();
-        testNaveDuplicada();
-        rankingOrdenaCorrectamente();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,8 +16,8 @@ public class Main {
             "6)Ranking de naves\n"+
             "7)Generar Naves y misiones\n"+
             "8)Listar Naves y misiones\n"+
-            "9)Salir\n"+
-            "10)Tests temporales");
+            "9)Tests\n"+
+            "10)Salir\n");
             opcion = scanner.nextInt();
             switch (opcion) {
                 case 1:
@@ -55,14 +48,17 @@ public class Main {
                   NavesEspaciales.logNaves();
                 break;
                 case 9:
-                  System.out.println("Adios!");
+                  testRegistroNaveExitosa();
+                  expTotalCorrecta();
+                  testNaveDuplicada();
+                  rankingOrdenaCorrectamente();
                 break;
                 case 10:
-                  Mision.test();
+                  System.out.println("Adios!");
                 break;
 
             }
-        }while (opcion!=9);
+        }while (opcion!=10);
         scanner.close();
         }
 

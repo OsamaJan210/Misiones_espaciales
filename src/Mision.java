@@ -10,7 +10,7 @@ import enums.MissionType;
 
 public abstract class Mision{
 
-    static List<Mision> misiones = new ArrayList<>();
+    private static List<Mision> misiones = new ArrayList<>();
     protected String nombre;
     protected int duracion;
     protected int prioridad;
@@ -19,6 +19,10 @@ public abstract class Mision{
     protected EnumMap<ExperienciaTipo, Integer> experienciaRequerida = new EnumMap<>(ExperienciaTipo.class);
 
     public Mision(){
+    }
+
+    public  MissionType getMissionType() {
+        return tipo;
     }
 
     public Mision(String nombre, int prioridad) {
@@ -107,7 +111,7 @@ public abstract class Mision{
 
         System.out.println("\nMision añadida correctamente\n");
         misiones.add(mision);
-        return mision; 
+        return mision;
     }
 
     public static Mision buscarMisiones(Scanner scanner){
@@ -154,7 +158,6 @@ public abstract class Mision{
         misiones.add(mision5);
         misiones.add(mision6);
     }
-
     //Test de instanseof
     public static Mision test() {
         for(Mision m : misiones){
@@ -176,7 +179,4 @@ public abstract class Mision{
     public MissionType getTipo(){
         return tipo;
     }
-
-
 }
-

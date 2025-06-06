@@ -60,7 +60,7 @@ public class RegistrarNaveUI extends JPanel {
 
                 int experienciaTotal = experienciaTecnica + experienciaCientifica + experienciaEstrategica;
 
-             /*   NavesEspaciales nave = new NavesEspaciales(
+                NavesEspaciales nave = new NavesEspaciales(
                         nombre,
                         autonomiaMaxima,
                         autonomiaActual,
@@ -68,11 +68,10 @@ public class RegistrarNaveUI extends JPanel {
                         sensoresCientificos,
                         experienciaTotal,
                         experienciaTecnica,
-                        experienciaCientifica,
-                        experienciaEstrategica
+                        experienciaCientifica
                 );
 
-                NavesEspaciales.getNaves().add(nave);*/
+                NavesEspaciales.getNaves().add(nave);
                 lblResultado.setText("✅ Nave registrada exitosamente.");
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Por favor, ingresa todos los campos numéricos correctamente.");
