@@ -7,8 +7,6 @@ public class NavesEspaciales {
     
     private static List<NavesEspaciales> naves = new ArrayList<>();
 
-    //Ya que no se van a cambiar ni hacer override les ponemos final
-
     private final String nombre;
     private final int autonomiaMaxima;
     private  int autonomiaActual;
@@ -76,6 +74,28 @@ public class NavesEspaciales {
         System.out.println("Nave registrada exitosamente.");
 
         return nave;
+    }
+
+    //Método extra borrarNave()
+
+    public static void borrarNave(Scanner scanner){
+        scanner.nextLine();
+        System.out.println("Ingrese el nombre de la nave que quieres eliminar");
+        String NombreEliminar = scanner.nextLine();
+
+        boolean naveEncontrada = false;
+        for (int i = 0;i < naves.size();i++){
+            if (naves.get(i).getNombre().equalsIgnoreCase(NombreEliminar)){
+                naves.remove(i);
+                System.out.println("Nave '"+ NombreEliminar + "' eliminada exitosamente");
+                naveEncontrada = true;
+                break;    
+            }
+        }
+    
+    if (!naveEncontrada){
+        System.out.println("No se encontró ninguna nave con el nombre '"+ NombreEliminar + "'." );
+        }
     }
 
     public static void mostrarEstado(){
