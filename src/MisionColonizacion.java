@@ -6,8 +6,8 @@ import enums.MissionType;
 
 public class MisionColonizacion extends Mision{
     Scanner scanner = new Scanner(System.in);
-    int carga = 500;
-    int cantidadXP =0;
+    static int carga = 500;
+    static int cantidadXP =0;
 
     public MisionColonizacion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, int carga) {
 
@@ -15,7 +15,6 @@ public class MisionColonizacion extends Mision{
         this.duracion = duracion;
         this.tipo = tipo;
         this.setExperiencia(experienciaTipo, cantidadXP);
-        this.carga = carga;
     }
 
     public MisionColonizacion(String nombre, int prioridad){
@@ -43,7 +42,7 @@ public class MisionColonizacion extends Mision{
         ExperienciaTipo experiencia = ExperienciaTipo.ESTRATEGICA;
         do{
             System.out.println("Indica la cantidad de carga que necesitaría la misión: ");
-            this.carga = scanner.nextInt();
+            carga = scanner.nextInt();
             if(carga<0){
                 System.out.println("***ERROR***\nLa carga no puede ser inferior a 0!!!");
             }
@@ -58,7 +57,7 @@ public class MisionColonizacion extends Mision{
         }while(duracion<6);
         do{
             System.out.println("Indica la cantidad de experiencia estratégica que necesitas: ");
-            this.cantidadXP = scanner.nextInt();
+            cantidadXP = scanner.nextInt();
             if(cantidadXP<0){
                 System.out.println("***ERROR***\n La experiéncia de la misión no puede ser negativa!!!");
             }

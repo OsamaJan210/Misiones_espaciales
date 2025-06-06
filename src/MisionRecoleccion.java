@@ -6,7 +6,7 @@ import enums.MissionType;
 
 public class MisionRecoleccion extends Mision{
     Scanner scanner = new Scanner(System.in);
-    int cantidadXP = 0;
+    static int cantidadXP = 0;
 
     public MisionRecoleccion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, boolean requiereCientifico) {
 
@@ -49,7 +49,7 @@ public class MisionRecoleccion extends Mision{
         }while(duracion<4 && duracion>8);
         do{
             System.out.println("Indica la cantidad de experiencia de recolección que necesitas: ");
-            this.cantidadXP = scanner.nextInt();
+            cantidadXP = scanner.nextInt();
             if(cantidadXP<0){
                 System.out.println("***ERROR***\n La experiéncia de la misión no puede ser negativa!!!");
             }

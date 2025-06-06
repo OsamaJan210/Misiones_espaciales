@@ -169,5 +169,14 @@ public abstract class Mision{
         }
         return null;
     }
+    public static List<Mision> getMisiones() {
+        return misiones;
+    }
+
+    public MissionType getTipo(){
+        return tipo;
+    }
+
+
 }
 
