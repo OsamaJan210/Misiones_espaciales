@@ -179,7 +179,7 @@ public abstract class Mision{
     public MissionType getTipo(){
         return tipo;
     }
-    
+
     public static void misionesPendientes(){
         System.out.println("== Misiones pendientes ==\n");
         for(Mision m : misiones){
@@ -187,5 +187,24 @@ public abstract class Mision{
                 System.out.println("- "+m.getNombre()+"\n");
             }
         }
+    }
+
+    public static void borrarMision(Scanner scanner){
+        boolean misionExiste = false;
+        scanner.nextLine();
+        System.out.println("Escribe el nombre de la misión que quieres eliminar: ");
+        String nombre = scanner.nextLine();
+        for(Mision m : misiones){
+            if(m.getStatus().equals(MissionStatus.PENDIENTE) && nombre.equalsIgnoreCase(m.getNombre())){
+                misiones.remove(m);
+                System.out.println("\nMision eliminada correctamente.\n");
+                misionExiste = true;
+                break;
+            }
+        }
+        if(!misionExiste){
+            System.out.println("No existe esta misión");
+        }
+        return;
     }
 }

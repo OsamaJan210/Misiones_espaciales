@@ -26,45 +26,48 @@ public class Main {
                   Mision.registrarMision(scanner);
                 break;
                 case 2:
-                  NavesEspaciales.registrarNave(scanner);
+                  Mision.borrarMision(scanner);
                 break;
                 case 3:
-                  NavesEspaciales.borrarNave(scanner);
+                  NavesEspaciales.registrarNave(scanner);
                 break;
                 case 4:
-                  Simulacion.simularCiclo();
+                  NavesEspaciales.borrarNave(scanner);
                 break;
                 case 5:
+                  Simulacion.simularCiclo();
+                break;
+                case 6:
                   NavesEspaciales.mostrarEstado();
                   Mision.misionesPendientes();
                 break;
-                case 6:
+                case 7:
                   Mision.buscarMisiones(scanner);
                 break;
-                case 7:
+                case 8:
                   NavesEspaciales.generarRanking();
                 break;
-                case 8:
+                case 9:
                   Mision.generarMisiones();
                   NavesEspaciales.generarNaves();  
                   System.out.println("\nNaves y Misiones generados correctamente\n");
                 break;
-                case 9:
+                case 10:
                   Mision.logMisiones();
                   NavesEspaciales.logNaves();
                 break;
-                case 10:
+                case 11:
                   testRegistroNaveExitosa();
                   expTotalCorrecta();
                   testNaveDuplicada();
                   rankingOrdenaCorrectamente();
                 break;
-                case 11:
+                case 12:
                   System.out.println("Adios!");
                 break;
 
             }
-        }while (opcion!=11);
+        }while (opcion!=12);
         scanner.close();
         }
 
