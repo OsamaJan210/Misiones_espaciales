@@ -4,13 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.reflect.TypeToken;
-import java.lang.reflect.Type;
-import com.google.gson.Gson;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class App {
     public static void main(String[] args) {
@@ -175,10 +172,12 @@ public class App {
       }
     }
     private static void cargarDatos() {
+      ArrayList<NavesEspaciales> naves = new ArrayList<>();
+      ObjectMapper mapper = new ObjectMapper();
       try{
-        FileReader reader = new FileReader("Misiones.json");
-        Type listType = new TypeToken<List<Mision>>() {}.getType();
-        List<Mision> misiones = new Gson().fromJson(reader, listType);
+        List<NavesEspaciales> navesimport = mapper.readValue(new File("Naves.json") , new TypeReference<List<NavesEspaciales>>() {});
+        naves.addAll(navesimport);
+        System.out.println("Naves añadidas correctamente!");
       } 
       catch (Exception e) {
             e.printStackTrace();
