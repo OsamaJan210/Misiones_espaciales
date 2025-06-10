@@ -1,6 +1,6 @@
 package com.example.proyecto;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.io.File;
@@ -49,6 +49,7 @@ public class App {
                 case 6:
                   NavesEspaciales.mostrarEstado();
                   Mision.misionesPendientes();
+                  Mision.misionesCompletadas();
                 break;
                 case 7:
                   Mision.buscarMisiones(scanner);
@@ -153,9 +154,9 @@ public class App {
             }
     }
     private static void guardarDatos() {
-      List<NavesEspaciales> naves = NavesEspaciales.getNaves();
+     // List<NavesEspaciales> naves = NavesEspaciales.getNaves();
       List<Mision> misiones = Mision.getMisiones();
-      List<App> misionNaves = new ArrayList<>();
+      //List<App> misionNaves = new ArrayList<>();
       ObjectMapper mapper = new ObjectMapper();
 
       try{

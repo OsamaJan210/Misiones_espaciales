@@ -117,11 +117,11 @@ public abstract class Mision{
 
     public static Mision buscarMisiones(Scanner scanner){
 
+        scanner.nextLine();
         System.out.println("Ingrese el nombre de la misión a buscar: ");
         String nombreMision = scanner.nextLine();
 
         for (Mision m : misiones){
-            System.out.println("Nombre mision: "+m.getNombre());
             if (m.getNombre().equalsIgnoreCase(nombreMision)){
                 System.out.println("Misión encontrada: ");
                 m.logMision();
@@ -146,7 +146,7 @@ public abstract class Mision{
 
     public static void generarMisiones() {
         Mision mision1 = new MisionExploracion("Mision Exploracion", 2, 10, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 4, 500);
-        Mision mision2 = new MisionExploracion("Mision Exploracion 2", 4, 20, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 1, 500);
+        Mision mision2 = new MisionExploracion("a", 4, 20, MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, 1, 500);
         Mision mision3 = new MisionColonizacion("Mision Colonización", 1, 40, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 5, 1000);
         Mision mision4 = new MisionColonizacion("Mision Colonización 2", 3, 5, MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, 2, 1000);
         Mision mision5 = new MisionRecoleccion("Mision Recolección de datos", 5, 15, MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, 4, true);
@@ -185,6 +185,14 @@ public abstract class Mision{
         System.out.println("== Misiones pendientes ==\n");
         for(Mision m : misiones){
             if(m.getStatus().equals(MissionStatus.PENDIENTE)){
+                System.out.println("- "+m.getNombre()+"\n");
+            }
+        }
+    }
+    public static void misionesCompletadas(){
+        System.out.println("== Misiones completadas ==\n");
+        for(Mision m : misiones){
+            if(m.getStatus().equals(MissionStatus.COMPLETADA)){
                 System.out.println("- "+m.getNombre()+"\n");
             }
         }
