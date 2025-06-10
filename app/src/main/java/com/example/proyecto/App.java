@@ -183,5 +183,22 @@ public class App {
             e.printStackTrace();
       }
     }
+
+    public static List<NavesEspaciales> readNaves(){
+        ObjectMapper mapper = new ObjectMapper();
+        try{
+
+            List<NavesEspaciales> naves = mapper.readValue(
+                    new File("Naves.json"),
+                    new TypeReference<List<NavesEspaciales>>() {}
+            );
+            return naves;
+        }
+        catch (Exception ex){
+             System.out.println("Exception");
+                ex.printStackTrace();
+        }
+        return null;
+    }
 }
 
