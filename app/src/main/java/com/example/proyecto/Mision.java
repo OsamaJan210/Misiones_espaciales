@@ -115,7 +115,34 @@ public abstract class Mision{
         return mision;
     }
 
-    public static Mision buscarMisiones(Scanner scanner){
+    public static List<Mision> buscarMisiones(Scanner scanner){
+        scanner.nextLine();
+        System.out.println("Indica el tipo de misión que quieres buscar, si no te importa el tipo, escribe '-' (Exploración, Recolección, Colonización): ");
+        String tipoMision = scanner.nextLine();
+        System.out.println("Indica el estado de la misión que quieres buscar, si no quieres buscar por estado escribe '-'(Completada, Pendiente)");
+        String estadoMision = scanner.nextLine();
+        System.out.println("Indica un rango de inicio de prioridad de las misiones: ");
+        int primerRango = scanner.nextInt();
+        System.out.println("indica el segundo rango de prioridad de las misiones: ");
+        int segundoRango = scanner.nextInt();
+        List<Mision> result = new ArrayList<>();
+        for (Mision m : misiones){
+            boolean tipoMisionIsOk = tipoMision.equals("-") || m.getTipo().equalsName(tipoMision);
+            boolean estadoMisionIsOk = estadoMision.equals("-") || m.getStatus().equalsName(estadoMision);
+            boolean rangoMisionIsOK = m.getPrioridad()>=primerRango && m.getPrioridad()<=segundoRango;
+            if(tipoMisionIsOk && estadoMisionIsOk && rangoMisionIsOK){
+                result.add(m);
+            }
+        }
+        for(Mision r : result){
+            System.out.println("\nNombre: "+r.getNombre()+"\nTipo de mision: "+r.getTipo()+"\nDuración: "+r.getDuracion()+"\nPrioridad: "+r.getPrioridad()+"\nEstado: "+r.getStatus());
+        }
+        if(result.isEmpty())
+            System.out.println("No se encontró ninguna misión con esos parametros.");
+        return result;
+
+    }
+   /* public static Mision buscarMisiones(Scanner scanner){
 
         scanner.nextLine();
         System.out.println("Ingrese el nombre de la misión a buscar: ");
@@ -132,7 +159,7 @@ public abstract class Mision{
         System.out.println("No se encontró ninguna misión con ese nombre.");
         return null;
 
-    }
+    }*/
 
     public static void logMisiones(){
         System.out.println("\n*****MISIONES*****");
