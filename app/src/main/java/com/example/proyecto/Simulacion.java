@@ -51,7 +51,7 @@ public class Simulacion {
         }
 
         // 4. Eliminar misiones asignadas de la lista principal (opcional)
-        misiones.removeAll(misionesAsignadas);
+        // misiones.removeAll(misionesAsignadas);
 
         // 5. Restaurar la autonomía de las naves no utilizadas
         for (NavesEspaciales nave : naves) {
