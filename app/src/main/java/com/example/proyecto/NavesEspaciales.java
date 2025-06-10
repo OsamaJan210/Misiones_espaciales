@@ -1,4 +1,7 @@
 package com.example.proyecto;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -18,11 +21,24 @@ public class NavesEspaciales {
     private  int experienciaEstrategica;
     private  int experienciaTotal;
 
+
     public NavesEspaciales(List<NavesEspaciales> navesEspaciales){
         this.naves=navesEspaciales;
     }
 
-    public NavesEspaciales(String nombre, int autonomiaMaxima, int autonomiaActual, int capacidadCarga, boolean sensoresCientificos,  int experienciaTecnica, int experienciaCientifica, int experienciaEstrategica) {
+
+
+    @JsonCreator
+    public NavesEspaciales(
+            @JsonProperty("nombre") String nombre,
+            @JsonProperty("autonomiaMaxima") int autonomiaMaxima,
+            @JsonProperty("autonomiaActual") int autonomiaActual,
+            @JsonProperty("capacidadCarga") int capacidadCarga,
+            @JsonProperty(value = "sensoresCientificos", defaultValue = "false") boolean sensoresCientificos, // Optional field
+            @JsonProperty("experienciaTecnica") int experienciaTecnica,
+            @JsonProperty("experienciaCientifica") int experienciaCientifica,
+            @JsonProperty("experienciaEstrategica") int experienciaEstrategica) {        
+                
         this.nombre = nombre;
         this.autonomiaMaxima = autonomiaMaxima;
         this.autonomiaActual = autonomiaActual;
