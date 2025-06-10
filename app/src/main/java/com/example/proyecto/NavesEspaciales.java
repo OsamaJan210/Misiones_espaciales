@@ -6,17 +6,21 @@ import java.util.Scanner;
 
 public class NavesEspaciales {
     
-    private static List<NavesEspaciales> naves = new ArrayList<>();
+    private  static List<NavesEspaciales> naves = new ArrayList<>();
 
-    private final String nombre;
-    private final int autonomiaMaxima;
+    private  String nombre;
+    private  int autonomiaMaxima;
     private  int autonomiaActual;
-    private final int capacidadCarga;
-    private final boolean sensoresCientificos;
+    private  int capacidadCarga;
+    private  boolean sensoresCientificos;
     private  int experienciaTecnica;
     private  int experienciaCientifica;
     private  int experienciaEstrategica;
     private  int experienciaTotal;
+
+    public NavesEspaciales(List<NavesEspaciales> navesEspaciales){
+        this.naves=navesEspaciales;
+    }
 
     public NavesEspaciales(String nombre, int autonomiaMaxima, int autonomiaActual, int capacidadCarga, boolean sensoresCientificos,  int experienciaTecnica, int experienciaCientifica, int experienciaEstrategica) {
         this.nombre = nombre;

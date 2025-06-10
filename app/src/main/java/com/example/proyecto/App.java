@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class App {
     public static void main(String[] args) {
+      NavesEspaciales navesEspaciales;
         Scanner scanner = new Scanner(System.in);
 
         int opcion = 0;
@@ -78,8 +79,9 @@ public class App {
                   guardarDatos();
                 break;
                 case 13:
-                  cargarDatos();
-                break;
+                new NavesEspaciales(readNaves());
+                  //cargarDatos();     
+                             break;
                 case 14:
                   System.out.println("Adios!");
                 break;

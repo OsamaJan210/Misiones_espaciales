@@ -2,9 +2,9 @@
     {
         "nombre": "Omega",
         "autonomiaMaxima": 1500,
-        "autonomiaActual": 1485,
+        "autonomiaActual": 1500,
         "capacidadCarga": 700,
-        "experienciaTecnica": 3,
+        "experienciaTecnica": 2,
         "experienciaCientifica": 1,
         "experienciaEstrategica": 2,
         "experienciaTotal": 5
@@ -12,9 +12,9 @@
     {
         "nombre": "Alpha",
         "autonomiaMaxima": 900,
-        "autonomiaActual": 885,
+        "autonomiaActual": 900,
         "capacidadCarga": 600,
-        "experienciaTecnica": 3,
+        "experienciaTecnica": 2,
         "experienciaCientifica": 5,
         "experienciaEstrategica": 3,
         "experienciaTotal": 10
@@ -22,10 +22,10 @@
     {
         "nombre": "Beta",
         "autonomiaMaxima": 1200,
-        "autonomiaActual": 200,
+        "autonomiaActual": 1200,
         "capacidadCarga": 400,
         "experienciaTecnica": 10,
-        "experienciaCientifica": 1,
+        "experienciaCientifica": 0,
         "experienciaEstrategica": 2,
         "experienciaTotal": 12
     }

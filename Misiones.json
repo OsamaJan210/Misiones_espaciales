@@ -17,15 +17,15 @@
         "autonomia": 1000,
         "xp": 0,
         "missionType": "EXPLORACION",
-        "status": "COMPLETADA"
+        "status": "PENDIENTE"
     },
     {
         "nombre": "Mision Colonización",
         "duracion": 40,
         "prioridad": 1,
         "tipo": "COLONIZACION",
-        "carga": 500,
         "xp": 0,
+        "carga": 500,
         "missionType": "COLONIZACION",
         "status": "PENDIENTE"
     },
@@ -34,8 +34,8 @@
         "duracion": 5,
         "prioridad": 3,
         "tipo": "COLONIZACION",
-        "carga": 500,
         "xp": 0,
+        "carga": 500,
         "missionType": "COLONIZACION",
         "status": "PENDIENTE"
     },
@@ -46,7 +46,7 @@
         "tipo": "RECOLECCION_DATOS",
         "xp": 0,
         "missionType": "RECOLECCION_DATOS",
-        "status": "COMPLETADA"
+        "status": "PENDIENTE"
     },
     {
         "nombre": "Mision Recolección de datos 2",
@@ -55,6 +55,6 @@
         "tipo": "RECOLECCION_DATOS",
         "xp": 0,
         "missionType": "RECOLECCION_DATOS",
-        "status": "COMPLETADA"
+        "status": "PENDIENTE"
     }
 ]

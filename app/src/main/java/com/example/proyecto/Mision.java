@@ -19,7 +19,11 @@ public abstract class Mision{
     protected MissionType tipo;
     protected EnumMap<ExperienciaTipo, Integer> experienciaRequerida = new EnumMap<>(ExperienciaTipo.class);
 
+   /* public Mision(List<Mision> misions){
+        this.misiones=misions;
+    }*/
     public Mision(){
+        
     }
 
     public  MissionType getMissionType() {
