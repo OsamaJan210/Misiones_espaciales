@@ -1,0 +1,60 @@
+[
+    {
+        "nombre": "Mision Exploracion",
+        "duracion": 10,
+        "prioridad": 2,
+        "tipo": "EXPLORACION",
+        "autonomia": 1000,
+        "xp": 0,
+        "missionType": "EXPLORACION",
+        "status": "PENDIENTE"
+    },
+    {
+        "nombre": "a",
+        "duracion": 20,
+        "prioridad": 4,
+        "tipo": "EXPLORACION",
+        "autonomia": 1000,
+        "xp": 0,
+        "missionType": "EXPLORACION",
+        "status": "COMPLETADA"
+    },
+    {
+        "nombre": "Mision Colonización",
+        "duracion": 40,
+        "prioridad": 1,
+        "tipo": "COLONIZACION",
+        "carga": 500,
+        "xp": 0,
+        "missionType": "COLONIZACION",
+        "status": "PENDIENTE"
+    },
+    {
+        "nombre": "Mision Colonización 2",
+        "duracion": 5,
+        "prioridad": 3,
+        "tipo": "COLONIZACION",
+        "carga": 500,
+        "xp": 0,
+        "missionType": "COLONIZACION",
+        "status": "PENDIENTE"
+    },
+    {
+        "nombre": "Mision Recolección de datos",
+        "duracion": 15,
+        "prioridad": 5,
+        "tipo": "RECOLECCION_DATOS",
+        "xp": 0,
+        "missionType": "RECOLECCION_DATOS",
+        "status": "COMPLETADA"
+    },
+    {
+        "nombre": "Mision Recolección de datos 2",
+        "duracion": 15,
+        "prioridad": 6,
+        "tipo": "RECOLECCION_DATOS",
+        "xp": 0,
+        "missionType": "RECOLECCION_DATOS",
+        "status": "COMPLETADA"
+    }
+]
