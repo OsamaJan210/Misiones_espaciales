@@ -23,11 +23,8 @@ public class NavesEspaciales {
 
 
     public NavesEspaciales(List<NavesEspaciales> navesEspaciales){
-        this.naves=navesEspaciales;
+        NavesEspaciales.naves=navesEspaciales;
     }
-
-
-
     @JsonCreator
     public NavesEspaciales(
             @JsonProperty("nombre") String nombre,

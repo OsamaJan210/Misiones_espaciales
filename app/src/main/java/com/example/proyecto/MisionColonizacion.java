@@ -4,22 +4,28 @@ import java.util.Scanner;
 import com.example.proyecto.enums.ExperienciaTipo;
 import com.example.proyecto.enums.MissionStatus;
 import com.example.proyecto.enums.MissionType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MisionColonizacion extends Mision{
     Scanner scanner = new Scanner(System.in);
-    static int carga = 500;
-    static int cantidadXP =0;
+    private int carga = 500;
+    @JsonProperty("xp")
+    private int cantidadXP =0;
 
     public MisionColonizacion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, int carga) {
 
         super(nombre,prioridad);
         this.duracion = duracion;
         this.tipo = tipo;
+        this.carga = carga;
         this.setExperiencia(experienciaTipo, cantidadXP);
     }
 
     public MisionColonizacion(String nombre, int prioridad){
 
+    }
+    public MisionColonizacion() {
+        super();
     }
 
     public int getDuracion(){
@@ -30,8 +36,16 @@ public class MisionColonizacion extends Mision{
         return carga;
     }
 
-    public int getXP(){
+    public void setCarga(int carga){
+        this.carga = carga;
+    }
+
+    public int getXP() {
         return cantidadXP;
+    }
+
+    public void setXP(int xp) {
+        this.cantidadXP = xp;
     }
 
     @Override

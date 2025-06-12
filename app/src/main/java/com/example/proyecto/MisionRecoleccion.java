@@ -4,10 +4,12 @@ import java.util.Scanner;
 import com.example.proyecto.enums.ExperienciaTipo;
 import com.example.proyecto.enums.MissionStatus;
 import com.example.proyecto.enums.MissionType;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MisionRecoleccion extends Mision{
     Scanner scanner = new Scanner(System.in);
-    static int cantidadXP = 0;
+    @JsonProperty("xp")
+    private int cantidadXP = 0;
 
     public MisionRecoleccion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, boolean requiereCientifico) {
 
@@ -22,12 +24,20 @@ public class MisionRecoleccion extends Mision{
 
     }
 
+    public MisionRecoleccion() {
+    super();
+}
+
     public int getDuracion(){
         return duracion;
     }
 
-    public int getXP(){
+    public int getXP() {
         return cantidadXP;
+    }
+
+    public void setXP(int xp) {
+        this.cantidadXP = xp;
     }
 
     @Override

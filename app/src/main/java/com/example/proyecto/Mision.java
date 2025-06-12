@@ -7,8 +7,21 @@ import java.util.Scanner;
 import com.example.proyecto.enums.ExperienciaTipo;
 import com.example.proyecto.enums.MissionStatus;
 import com.example.proyecto.enums.MissionType;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    include = JsonTypeInfo.As.PROPERTY,
+    property = "tipo"
+)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = MisionColonizacion.class, name = "COLONIZACION"),
+    @JsonSubTypes.Type(value = MisionExploracion.class, name = "EXPLORACION"),
+    @JsonSubTypes.Type(value = MisionRecoleccion.class, name = "RECOLECCION_DATOS")
+})
 public abstract class Mision{
 
     private static List<Mision> misiones = new ArrayList<>();
@@ -19,21 +32,26 @@ public abstract class Mision{
     protected MissionType tipo;
     protected EnumMap<ExperienciaTipo, Integer> experienciaRequerida = new EnumMap<>(ExperienciaTipo.class);
 
-   /* public Mision(List<Mision> misions){
+    public Mision(List<Mision> misions){
         this.misiones=misions;
-    }*/
+    }
+
+    @JsonCreator
+    public Mision(
+        @JsonProperty("nombre") String nombre,
+        @JsonProperty("prioridad") int prioridad) {   
+            
+        this.nombre = nombre;
+        this.prioridad = prioridad;
+        this.estado = MissionStatus.PENDIENTE;
+        }
+
     public Mision(){
         
     }
 
     public  MissionType getMissionType() {
         return tipo;
-    }
-
-    public Mision(String nombre, int prioridad) {
-        this.nombre = nombre;
-        this.prioridad = prioridad;
-        this.estado = MissionStatus.PENDIENTE;
     }
 
     public MissionStatus getStatus(){

@@ -6,12 +6,13 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
 
+import com.example.proyecto.enums.ExperienciaTipo;
+import com.example.proyecto.enums.MissionType;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class App {
     public static void main(String[] args) {
-      NavesEspaciales navesEspaciales;
         Scanner scanner = new Scanner(System.in);
 
         int opcion = 0;
@@ -79,9 +80,12 @@ public class App {
                   guardarDatos();
                 break;
                 case 13:
-                new NavesEspaciales(readNaves());
-                  //cargarDatos();     
-                             break;
+                  new NavesEspaciales(readNaves());
+                  List<Mision> misionesLeidas = readMisiones();
+                  if (misionesLeidas != null) {
+                      Mision.getMisiones().addAll(misionesLeidas);
+                  }
+                break;
                 case 14:
                   System.out.println("Adios!");
                 break;
@@ -173,23 +177,10 @@ public class App {
         e.printStackTrace();
       }
     }
-    private static void cargarDatos() {
-      ArrayList<NavesEspaciales> naves = new ArrayList<>();
-      ObjectMapper mapper = new ObjectMapper();
-      try{
-        List<NavesEspaciales> navesimport = mapper.readValue(new File("Naves.json") , new TypeReference<List<NavesEspaciales>>() {});
-        naves.addAll(navesimport);
-        System.out.println("Naves añadidas correctamente!");
-      } 
-      catch (Exception e) {
-            e.printStackTrace();
-      }
-    }
 
     public static List<NavesEspaciales> readNaves(){
         ObjectMapper mapper = new ObjectMapper();
         try{
-
             List<NavesEspaciales> naves = mapper.readValue(
                     new File("Naves.json"),
                     new TypeReference<List<NavesEspaciales>>() {}
@@ -202,5 +193,36 @@ public class App {
         }
         return null;
     }
-}
 
+    public static List<Mision> readMisiones(){
+      ObjectMapper mapper = new ObjectMapper();
+      List<Mision> misiones= new ArrayList<>();
+      
+      try{
+        List<MissionDTO> misionesDTO = mapper.readValue(new File("Misiones.json"), new TypeReference<List<MissionDTO>>() {}
+        );
+        for(MissionDTO local:misionesDTO){
+          System.out.println(local.getNombre());
+          if (local.getMissionType().equals("RECOLECCION_DATOS")) {
+            Mision mision= new MisionRecoleccion(local.getNombre(), local.getPrioridad(), local.getDuracion(), MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, local.getXp(), true);
+            misiones.add(mision);
+          }
+          if (local.getMissionType().equals("EXPLORACION")) {
+             Mision mision= new MisionExploracion(local.getNombre(), local.getPrioridad(), local.getDuracion(), MissionType.EXPLORACION, ExperienciaTipo.CIENTIFICA, local.getXp(), local.getAutonomia() );
+            misiones.add(mision);
+          }
+          if (local.getMissionType().equals("COLONIZACION")) {
+             Mision mision= new MisionColonizacion(local.getNombre(), local.getPrioridad(), local.getDuracion(), MissionType.COLONIZACION, ExperienciaTipo.ESTRATEGICA, local.getXp(), local.getCarga());
+            misiones.add(mision);
+          }
+
+        }
+        return misiones;
+      }
+      catch (Exception ex){
+        System.out.println("Exception");
+        ex.printStackTrace();
+      }
+      return null;
+    }
+}
