@@ -49,6 +49,12 @@ public class MisionColonizacion extends Mision{
     }
 
     @Override
+    public String getExtraData() {
+        return String.valueOf(carga);
+    }
+    
+
+    @Override
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
         this.nombre = nombre;
         this.prioridad = prioridad;
@@ -79,5 +85,5 @@ public class MisionColonizacion extends Mision{
         }while(cantidadXP<0);
         setExperiencia(experiencia, cantidadXP);
     }
-    
+
 }

@@ -184,6 +184,77 @@ public class NavesEspaciales {
     }
 
 
+    public static void logTablaNaves(){
+        
+            System.out.println("***NAVES***");
+        String[] headers = {"Nombre", "Autonomía máxima", "Autonomía actual", "Capacidad Carga","Tiene sensores científicos","Experiéncia técnica","Experiéncia científica","Experiéncia estratégica","Experiencia total"};
+        String[][] data = new String[naves.size()][9];
+        for (int i = 0; i < naves.size(); i++) {
+            NavesEspaciales nave = naves.get(i);
+            data[i][0] = nave.getNombre();
+            data[i][1] = String.valueOf(nave.getAutonomiaMaxima());
+            data[i][2] = String.valueOf(nave.getAutonomiaActual());
+            data[i][3] = String.valueOf(nave.getCapacidadCarga());
+            data[i][4] = String.valueOf(nave.tieneSensoresCientificos());
+            data[i][5] = String.valueOf(nave.getExperienciaTecnica());   
+            data[i][6] = String.valueOf(nave.getExperienciaCientifica());   
+            data[i][7] = String.valueOf(nave.getExperienciaEstrategica());   
+            data[i][8] = String.valueOf(nave.getExperienciaTotal());           
+        }
+        imprimirTabla(headers, data);
+    }
+
+    public static void imprimirTabla(String[] headers, String[][]data){
+        
+        int[] columnWidths = new int[headers.length];
+
+        // Calcular el ancho de cada columna
+        for (int i = 0; i < headers.length; i++) {
+            columnWidths[i] = headers[i].length();
+            for (String[] row : data) {
+                if (row[i].length() > columnWidths[i]) {
+                    columnWidths[i] = row[i].length();
+                }
+            }
+        }
+
+        // Imprimir la línea superior
+        imprimirLinea(columnWidths);
+
+        // Imprimir los encabezados
+        System.out.print("|");
+        for (int i = 0; i < headers.length; i++) {
+            System.out.printf(" %-"+columnWidths[i]+"s |", headers[i]);
+        }
+        System.out.println();
+
+        // Línea separadora
+        imprimirLinea(columnWidths);
+
+        // Imprimir los datos
+        for (String[] row : data) {
+            System.out.print("|");
+            for (int i = 0; i < row.length; i++) {
+                System.out.printf(" %-"+columnWidths[i]+"s |", row[i]);
+            }
+            System.out.println();
+        }
+
+        // Línea inferior
+        imprimirLinea(columnWidths);
+    }
+
+    public static void imprimirLinea(int[] columnWidths) {
+        System.out.print("+");
+        for (int width : columnWidths) {
+            for (int i = 0; i < width + 2; i++) {
+                System.out.print("-");
+            }
+            System.out.print("+");
+        }
+        System.out.println();
+    }
+
     public static void logNaves(){
         System.out.println("******NAVES*****");
         for (NavesEspaciales naves : naves){

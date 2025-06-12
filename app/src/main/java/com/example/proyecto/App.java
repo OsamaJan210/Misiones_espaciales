@@ -90,6 +90,7 @@ public class App {
                 break;
                 case 14:
                   Mision.logTablaMisiones();
+                  NavesEspaciales.logTablaNaves();
                 break;
                 case 15:
                   System.out.println("Adios!");
@@ -207,7 +208,6 @@ public class App {
         List<MissionDTO> misionesDTO = mapper.readValue(new File("Misiones.json"), new TypeReference<List<MissionDTO>>() {}
         );
         for(MissionDTO local:misionesDTO){
-          System.out.println(local.getNombre());
           if (local.getMissionType().equals("RECOLECCION_DATOS")) {
             Mision mision= new MisionRecoleccion(local.getNombre(), local.getPrioridad(), local.getDuracion(), MissionType.RECOLECCION_DATOS, ExperienciaTipo.TECNICA, local.getXp(), true);
             misiones.add(mision);

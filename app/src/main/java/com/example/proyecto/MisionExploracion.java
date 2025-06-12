@@ -46,6 +46,12 @@ public class MisionExploracion extends Mision{
     public void setXP(int xp) {
         this.cantidadXP = xp;
     }
+
+    @Override
+    public String getExtraData() {
+        return String.valueOf(autonomia);
+    }
+    
     
     @Override
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){

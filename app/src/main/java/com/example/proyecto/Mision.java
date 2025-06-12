@@ -82,6 +82,9 @@ public abstract class Mision{
     public ExperienciaTipo getTipoExperiencia(){
          return experienciaRequerida.keySet().iterator().next();
     }
+
+    public abstract String getExtraData();
+
     public abstract void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado);
 
     public static Mision registrarMision(Scanner scanner){
@@ -188,10 +191,10 @@ public abstract class Mision{
     }*/
  
     public static void logTablaMisiones(){
-    
-        String[] headers = {"Nombre", "Duración", "Prioridad", "Tipo de misión","Tipo de experiéncia","Estado de la misión"};
-        String[][] data = new String[misiones.size()][6];
-        //System.out.println("Requested======="+misiones.size());
+        
+        System.out.println("***MISIONES***");
+        String[] headers = {"Nombre", "Duración", "Prioridad", "Tipo de misión","Tipo de experiéncia","Estado de la misión","Extra"};
+        String[][] data = new String[misiones.size()][7];
         for (int i = 0; i < misiones.size(); i++) {
             Mision mision = misiones.get(i);
             data[i][0] = mision.getNombre();
@@ -199,7 +202,8 @@ public abstract class Mision{
             data[i][2] = String.valueOf(mision.getPrioridad());
             data[i][3] = String.valueOf(mision.getMissionType());
             data[i][4] = String.valueOf(mision.getTipoExperiencia());
-            data[i][5] = String.valueOf(mision.getStatus());           
+            data[i][5] = String.valueOf(mision.getStatus());    
+            data[i][6] = String.valueOf(mision.getExtraData());
         }
 
         imprimirTabla(headers, data);

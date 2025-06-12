@@ -39,6 +39,12 @@ public class MisionRecoleccion extends Mision{
     public void setXP(int xp) {
         this.cantidadXP = xp;
     }
+    
+    @Override
+    public String getExtraData() {
+        return "";
+    }
+    
 
     @Override
     public void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado){
