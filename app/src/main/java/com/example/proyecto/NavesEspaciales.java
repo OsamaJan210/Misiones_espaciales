@@ -65,7 +65,6 @@ public class NavesEspaciales {
             System.out.println("Error: Ya existe una nave con ese nombre. Registro de nave cancelado.");
             return null;
         }
-
         int autonomiaMaxima = leerEntero(scanner, "Autonomía máxima: ", 1);
         int autonomiaActual = leerEntero(scanner, "Autonomía actual: ", 0);
 
@@ -78,11 +77,11 @@ public class NavesEspaciales {
 
         System.out.println("¿Sensores cientificos? (true/false) ");
         boolean sensoresCientificos = scanner.nextBoolean();
+        scanner.nextLine();
 
         int experienciaTecnica = leerEntero(scanner, "Experiencia técnica: ", 0);
         int experienciaCientifica = leerEntero(scanner, "Experiencia científica: ", 0);
         int experienciaEstrategica = leerEntero(scanner, "Experiencia estratégica: ", 0);
-        scanner.nextLine();
         
         NavesEspaciales nave = new NavesEspaciales(nombre, autonomiaMaxima, autonomiaActual,
         capacidadCarga, sensoresCientificos, experienciaTecnica,

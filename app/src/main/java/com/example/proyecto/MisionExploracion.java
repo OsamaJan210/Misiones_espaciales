@@ -15,7 +15,7 @@ public class MisionExploracion extends Mision{
     public MisionExploracion(String nombre, int prioridad, int duracion, MissionType tipo, ExperienciaTipo experienciaTipo, int cantidadXP, int autonomia) {
         super(nombre,prioridad);
         this.duracion = duracion;
-        this.tipo = tipo;
+        this.tipoMision = tipo;
         this.autonomia = autonomia;
         this.setExperiencia(experienciaTipo, cantidadXP);
     }
@@ -52,7 +52,7 @@ public class MisionExploracion extends Mision{
         this.nombre = nombre;
         this.prioridad = prioridad;
         this.estado = MissionStatus.PENDIENTE;
-        this.tipo = MissionType.EXPLORACION;
+        this.tipoMision = MissionType.EXPLORACION;
         ExperienciaTipo experiencia = ExperienciaTipo.CIENTIFICA;
         do{
             System.out.println("Indica la cantidad de autonomía que necesitaría la misión: ");

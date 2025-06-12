@@ -15,7 +15,7 @@ public class MisionRecoleccion extends Mision{
 
         super(nombre,prioridad);
         this.duracion = duracion;
-        this.tipo = tipo;
+        this.tipoMision = tipo;
         requiereCientifico = true;
         this.setExperiencia(experienciaTipo, cantidadXP);
     }
@@ -45,7 +45,7 @@ public class MisionRecoleccion extends Mision{
         this.nombre = nombre;
         this.prioridad = prioridad;
         this.estado = MissionStatus.PENDIENTE;
-        this.tipo = MissionType.RECOLECCION_DATOS;
+        this.tipoMision = MissionType.RECOLECCION_DATOS;
         ExperienciaTipo experiencia = ExperienciaTipo.TECNICA;
         this.duracion =0;
         do{

@@ -32,8 +32,10 @@ public class App {
             "11)Tests\n"+
             "12)Guardar datos\n"+
             "13)Cargar datos\n"+
-            "14)Salir\n");
+            "14)Mostrar tabla\n"+
+            "15)Salir\n");
             opcion = scanner.nextInt();
+            
             switch (opcion) {
                 case 1:
                   Mision.registrarMision(scanner);
@@ -87,11 +89,14 @@ public class App {
                   }
                 break;
                 case 14:
+                  Mision.logTablaMisiones();
+                break;
+                case 15:
                   System.out.println("Adios!");
                 break;
 
             }
-        }while (opcion!=14);
+        }while (opcion!=15);
         scanner.close();
         }
 

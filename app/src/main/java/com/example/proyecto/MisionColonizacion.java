@@ -16,7 +16,7 @@ public class MisionColonizacion extends Mision{
 
         super(nombre,prioridad);
         this.duracion = duracion;
-        this.tipo = tipo;
+        this.tipoMision = tipo;
         this.carga = carga;
         this.setExperiencia(experienciaTipo, cantidadXP);
     }
@@ -25,8 +25,8 @@ public class MisionColonizacion extends Mision{
 
     }
     public MisionColonizacion() {
-        super();
-    }
+    super();
+}
 
     public int getDuracion(){
         return duracion;
@@ -53,7 +53,7 @@ public class MisionColonizacion extends Mision{
         this.nombre = nombre;
         this.prioridad = prioridad;
         this.estado = MissionStatus.PENDIENTE;
-        this.tipo = MissionType.COLONIZACION;
+        this.tipoMision = MissionType.COLONIZACION;
         ExperienciaTipo experiencia = ExperienciaTipo.ESTRATEGICA;
         do{
             System.out.println("Indica la cantidad de carga que necesitaría la misión: ");

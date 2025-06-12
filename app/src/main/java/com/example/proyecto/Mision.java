@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 @JsonTypeInfo(
     use = JsonTypeInfo.Id.NAME,
     include = JsonTypeInfo.As.PROPERTY,
-    property = "tipo"
+    property = "clase"
 )
 @JsonSubTypes({
     @JsonSubTypes.Type(value = MisionColonizacion.class, name = "COLONIZACION"),
@@ -29,7 +29,7 @@ public abstract class Mision{
     protected int duracion;
     protected int prioridad;
     protected MissionStatus estado;
-    protected MissionType tipo;
+    protected MissionType tipoMision;
     protected EnumMap<ExperienciaTipo, Integer> experienciaRequerida = new EnumMap<>(ExperienciaTipo.class);
 
     public Mision(List<Mision> misions){
@@ -51,7 +51,7 @@ public abstract class Mision{
     }
 
     public  MissionType getMissionType() {
-        return tipo;
+        return tipoMision;
     }
 
     public MissionStatus getStatus(){
@@ -66,17 +66,21 @@ public abstract class Mision{
         return duracion;
     }
 
-    public void setExperiencia(ExperienciaTipo tipo, int cantidad){
-        experienciaRequerida.put(tipo, cantidad);
+    public void setExperiencia(ExperienciaTipo tipoXP, int cantidad){
+        experienciaRequerida.put(tipoXP, cantidad);
     }
 
-    public int getExperiencia(ExperienciaTipo tipo) {
-        return experienciaRequerida.getOrDefault(tipo, 0);
+    public int getExperiencia(ExperienciaTipo tipoXP) {
+        return experienciaRequerida.getOrDefault(tipoXP, 0);
     }
 
 
     public int getPrioridad() {
         return prioridad;
+    }
+
+    public ExperienciaTipo getTipoExperiencia(){
+         return experienciaRequerida.keySet().iterator().next();
     }
     public abstract void acabarDeRegistrarDatos(String nombre, int prioridad, MissionStatus estado);
 
@@ -149,7 +153,7 @@ public abstract class Mision{
         int segundoRango = scanner.nextInt();
         List<Mision> result = new ArrayList<>();
         for (Mision m : misiones){
-            boolean tipoMisionIsOk = tipoMision.equals("-") || m.getTipo().equalsName(tipoMision);
+            boolean tipoMisionIsOk = tipoMision.equals("-") || m.getMissionType().equalsName(tipoMision);
             boolean estadoMisionIsOk = estadoMision.equals("-") || m.getStatus().equalsName(estadoMision);
             boolean rangoMisionIsOK = m.getPrioridad()>=primerRango && m.getPrioridad()<=segundoRango;
             if(tipoMisionIsOk && estadoMisionIsOk && rangoMisionIsOK){
@@ -157,7 +161,7 @@ public abstract class Mision{
             }
         }
         for(Mision r : result){
-            System.out.println("\nNombre: "+r.getNombre()+"\nTipo de mision: "+r.getTipo()+"\nDuración: "+r.getDuracion()+"\nPrioridad: "+r.getPrioridad()+"\nEstado: "+r.getStatus());
+            System.out.println("\nNombre: "+r.getNombre()+"\nTipo de mision: "+r.getMissionType()+"\nDuración: "+r.getDuracion()+"\nPrioridad: "+r.getPrioridad()+"\nEstado: "+r.getStatus());
         }
         if(result.isEmpty())
             System.out.println("No se encontró ninguna misión con esos parametros.");
@@ -182,6 +186,77 @@ public abstract class Mision{
         return null;
 
     }*/
+ 
+    public static void logTablaMisiones(){
+    
+        String[] headers = {"Nombre", "Duración", "Prioridad", "Tipo de misión","Tipo de experiéncia","Estado de la misión"};
+        String[][] data = new String[misiones.size()][6];
+        //System.out.println("Requested======="+misiones.size());
+        for (int i = 0; i < misiones.size(); i++) {
+            Mision mision = misiones.get(i);
+            data[i][0] = mision.getNombre();
+            data[i][1] = String.valueOf(mision.getDuracion());
+            data[i][2] = String.valueOf(mision.getPrioridad());
+            data[i][3] = String.valueOf(mision.getMissionType());
+            data[i][4] = String.valueOf(mision.getTipoExperiencia());
+            data[i][5] = String.valueOf(mision.getStatus());           
+        }
+
+        imprimirTabla(headers, data);
+    }
+
+    public static void imprimirTabla(String[] headers, String[][]data){
+        
+        int[] columnWidths = new int[headers.length];
+
+        // Calcular el ancho de cada columna
+        for (int i = 0; i < headers.length; i++) {
+            columnWidths[i] = headers[i].length();
+            for (String[] row : data) {
+                if (row[i].length() > columnWidths[i]) {
+                    columnWidths[i] = row[i].length();
+                }
+            }
+        }
+
+        // Imprimir la línea superior
+        imprimirLinea(columnWidths);
+
+        // Imprimir los encabezados
+        System.out.print("|");
+        for (int i = 0; i < headers.length; i++) {
+            System.out.printf(" %-"+columnWidths[i]+"s |", headers[i]);
+        }
+        System.out.println();
+
+        // Línea separadora
+        imprimirLinea(columnWidths);
+
+        // Imprimir los datos
+        for (String[] row : data) {
+            System.out.print("|");
+            for (int i = 0; i < row.length; i++) {
+                System.out.printf(" %-"+columnWidths[i]+"s |", row[i]);
+            }
+            System.out.println();
+        }
+
+        // Línea inferior
+        imprimirLinea(columnWidths);
+    }
+
+    public static void imprimirLinea(int[] columnWidths) {
+        System.out.print("+");
+        for (int width : columnWidths) {
+            for (int i = 0; i < width + 2; i++) {
+                System.out.print("-");
+            }
+            System.out.print("+");
+        }
+        System.out.println();
+    }
+
+
 
     public static void logMisiones(){
         System.out.println("\n*****MISIONES*****");
@@ -190,7 +265,7 @@ public abstract class Mision{
         }
     }
     public void logMision(){
-        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipo+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
+        System.out.println("\nNombre: "+this.nombre+"\nTipo de mision: "+this.tipoMision+"\nDuración: "+this.duracion+"\nPrioridad: "+this.prioridad+"\nEstado: "+this.estado+"\nTipo de experiencia y cantidad: "+this.experienciaRequerida);
     }
 
     public static void generarMisiones() {
@@ -224,10 +299,6 @@ public abstract class Mision{
     }
     public static List<Mision> getMisiones() {
         return misiones;
-    }
-
-    public MissionType getTipo(){
-        return tipo;
     }
 
     public static void misionesPendientes(){

@@ -5,7 +5,7 @@ public class MissionDTO {
     private String nombre;
     private int duracion;
     private int prioridad;
-    private String tipo;
+    private String tipoExperiencia;
     private int carga;
     private int autonomia;
     private int xp;
@@ -46,11 +46,11 @@ public void setAutonomia(int autonomia) {
 }
 
 public String getTipo() {
-    return tipo;
+    return tipoExperiencia;
 }
 
-public void setTipo(String tipo) {
-    this.tipo = tipo;
+public void setTipoExperiencia(String tipoExperiencia) {
+    this.tipoExperiencia = tipoExperiencia;
 }
 
 public int getCarga() {
