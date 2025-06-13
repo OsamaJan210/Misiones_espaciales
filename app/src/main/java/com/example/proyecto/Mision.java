@@ -25,6 +25,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 })
 public abstract class Mision{
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_ROJO = "\u001B[31m";
+    public static final String ANSI_VERDE = "\u001B[32m";
+    public static final String ANSI_AZUL = "\u001B[34m";
+
     private static List<Mision> misiones = new ArrayList<>();
     protected String nombre;
     protected int duracion;
@@ -216,7 +221,6 @@ public abstract class Mision{
     public static void imprimirTabla(String[] headers, String[][]data){
         
         int[] columnWidths = new int[headers.length];
-
         // Calcular el ancho de cada columna
         for (int i = 0; i < headers.length; i++) {
             columnWidths[i] = headers[i].length();
@@ -231,9 +235,10 @@ public abstract class Mision{
         imprimirLinea(columnWidths);
 
         // Imprimir los encabezados
-        System.out.print("|");
+        System.out.print(ANSI_AZUL+"|"+ANSI_RESET);
         for (int i = 0; i < headers.length; i++) {
-            System.out.printf(" %-"+columnWidths[i]+"s |", headers[i]);
+            System.out.printf(ANSI_AZUL+" %-"+columnWidths[i]+"s |"+ANSI_RESET, headers[i]);
+
         }
         System.out.println();
 
@@ -244,6 +249,7 @@ public abstract class Mision{
         for (String[] row : data) {
             System.out.print("|");
             for (int i = 0; i < row.length; i++) {
+                
                 System.out.printf(" %-"+columnWidths[i]+"s |", row[i]);
             }
             System.out.println();

@@ -9,6 +9,11 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class NavesEspaciales {
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_ROJO = "\u001B[31m";
+    public static final String ANSI_VERDE = "\u001B[32m";
+    public static final String ANSI_AZUL = "\u001B[34m";
     
     private  static List<NavesEspaciales> naves = new ArrayList<>();
 
@@ -223,9 +228,9 @@ public class NavesEspaciales {
         imprimirLinea(columnWidths);
 
         // Imprimir los encabezados
-        System.out.print("|");
+        System.out.print(ANSI_VERDE+"|"+ANSI_RESET);
         for (int i = 0; i < headers.length; i++) {
-            System.out.printf(" %-"+columnWidths[i]+"s |", headers[i]);
+            System.out.printf(ANSI_VERDE+" %-"+columnWidths[i]+"s |"+ANSI_RESET, headers[i]);
         }
         System.out.println();
 
