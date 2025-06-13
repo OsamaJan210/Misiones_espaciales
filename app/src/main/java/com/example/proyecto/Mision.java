@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 import com.example.proyecto.enums.ExperienciaTipo;
 import com.example.proyecto.enums.MissionStatus;
@@ -342,5 +343,70 @@ public abstract class Mision{
             System.out.println("No existe esta misión");
         }
         return;
+    }
+
+    public static Mision misionRandom() {
+        Random random = new Random();
+
+        String[] nombresNavesRandom = {"Hibana","Azami","Ying","Thunderbird","Frost"};
+        int[] duracionesNavesRandom = {5,10,15,20,25};
+        int[] autonomiaCargaNavesRandom = {500,600,700,800,900};
+        ExperienciaTipo[] tiposXPNavesRandom = {ExperienciaTipo.CIENTIFICA, ExperienciaTipo.ESTRATEGICA,
+        ExperienciaTipo.TECNICA};
+
+        // NR es el acrónimo de naves Random, para ahorrar espacio
+        int indexNombreNR = random.nextInt(nombresNavesRandom.length);
+        int indexDuracionNR = random.nextInt(duracionesNavesRandom.length);
+        int indexAutonomiaCargaNR = random.nextInt(autonomiaCargaNavesRandom.length);
+        int prioridadNR = random.nextInt(100) + 1;
+        int tipoMisionNR = random.nextInt(3);
+        ExperienciaTipo tipoXPNR = tiposXPNavesRandom[random.nextInt(tiposXPNavesRandom.length)];
+        int cantidadXPNR = random.nextInt(5) + 1;
+
+        Mision nuevaMision;
+
+        switch (tipoMisionNR){
+            case 0:
+                nuevaMision = new MisionExploracion(
+                nombresNavesRandom[indexNombreNR],
+                prioridadNR,
+                duracionesNavesRandom[indexDuracionNR],
+                MissionType.EXPLORACION,
+                tipoXPNR,
+                cantidadXPNR,
+                autonomiaCargaNavesRandom[indexAutonomiaCargaNR]
+                );
+            break;
+
+            case 1:
+                nuevaMision = new MisionExploracion(
+                nombresNavesRandom[indexNombreNR],
+                prioridadNR,
+                duracionesNavesRandom[indexDuracionNR],
+                MissionType.COLONIZACION,
+                tipoXPNR,
+                cantidadXPNR,
+                autonomiaCargaNavesRandom[indexAutonomiaCargaNR]
+                );
+            break;
+            case 2:
+                nuevaMision = new MisionExploracion(
+                nombresNavesRandom[indexNombreNR],
+                prioridadNR,
+                duracionesNavesRandom[indexDuracionNR],
+                MissionType.RECOLECCION_DATOS,
+                tipoXPNR,
+                cantidadXPNR,
+                autonomiaCargaNavesRandom[indexAutonomiaCargaNR]
+                );
+            break;
+            default:
+                return null;
+        }
+        
+    misiones.add(nuevaMision);
+    System.out.println("Misión aleatoria creada: ");
+    nuevaMision.logMision();
+    return nuevaMision;
     }
 }
