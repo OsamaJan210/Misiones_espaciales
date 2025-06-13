@@ -20,8 +20,6 @@ public class NavesEspaciales {
     private  int experienciaTecnica;
     private  int experienciaCientifica;
     private  int experienciaEstrategica;
-    private  int experienciaTotal;
-
 
     public NavesEspaciales(List<NavesEspaciales> navesEspaciales){
         NavesEspaciales.naves=navesEspaciales;
@@ -45,7 +43,7 @@ public class NavesEspaciales {
         this.experienciaTecnica = experienciaTecnica;
         this.experienciaCientifica = experienciaCientifica;
         this.experienciaEstrategica = experienciaEstrategica;
-        this.experienciaTotal = experienciaTecnica + experienciaCientifica + experienciaEstrategica;
+        
 
     }
 
@@ -154,7 +152,7 @@ public class NavesEspaciales {
     }
 
     public int getExperienciaTotal() {
-        return experienciaTotal;
+        return experienciaTecnica + experienciaCientifica + experienciaEstrategica;
     }
 
     public int getExperienciaTecnica() {
@@ -275,7 +273,7 @@ public class NavesEspaciales {
                 Científica: %d
                 Estratégica: %d
                 """, nombre, autonomiaMaxima, autonomiaActual, capacidadCarga,
-                sensoresCientificos ? "Sí" : "No", experienciaTotal,
+                sensoresCientificos ? "Sí" : "No",
                 experienciaTecnica, experienciaCientifica, experienciaEstrategica);
     }
     
@@ -313,7 +311,6 @@ public class NavesEspaciales {
                 ", autonomiaActual=" + autonomiaActual +
                 ", capacidadCarga=" + capacidadCarga +
                 ", sensoresCientificos=" + sensoresCientificos +
-                ", experienciaTotal=" + experienciaTotal +
                 ", experienciaTecnica=" + experienciaTecnica +
                 ", experienciaCientifica=" + experienciaCientifica +
                 ", experienciaEstrategica=" + experienciaEstrategica +
