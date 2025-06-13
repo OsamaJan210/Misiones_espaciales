@@ -2,6 +2,8 @@ package com.example.proyecto;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import com.example.proyecto.enums.EventoMision;
 import com.example.proyecto.enums.MissionStatus;
 
 public class Simulacion {
@@ -90,8 +92,6 @@ public class Simulacion {
         System.out.println("Nave seleccionada: " + nave.getNombre());
         System.out.println("Ejecutando misión...");
 
-        String evento = eventoAleatorio();
-        System.out.println("Evento aleatorio: " + evento);
 
         switch (mision.getMissionType()) {
             case COLONIZACION:
@@ -106,24 +106,32 @@ public class Simulacion {
                 nave.setExperienciaTecnica(nave.getExperienciaTecnica() + 1);
                 nave.setAutonomiaActual(nave.getAutonomiaActual() - ((MisionRecoleccion) mision).getDuracion());
                 break;
+                
         }
+        EventoMision evento = eventoAleatorio();
+
+        if(evento == EventoMision.FALLO){
+            nave.setExperienciaCientifica(nave.getExperienciaCientifica() - 1);
+        }
+        System.out.println("Evento aleatorio: " + evento);
         mision.estado  = MissionStatus.COMPLETADA;
         System.out.println("Experiencia ganada +1");
         System.out.println("Autonomía restante: " + nave.getAutonomiaActual());
     }
 
     // Genera un evento aleatorio
-    private static String eventoAleatorio() {
+    private static EventoMision eventoAleatorio() {
         Random random = new Random();
         int numero = random.nextInt(101); // entre 0 y 100
 
         if (numero <= 10) {
-            return "¡La misión ha fallado! No se gana experiencia.";
+            return EventoMision.FALLO;
         } else if (numero <= 15) {
-            return "¡Evento de mejora tecnológica! La nave gana 2 de experiencia extra.";
+            return EventoMision.AVANCE;
         } else if (numero <= 20) {
-            return "¡Se ha descubierto algo especial!";
+            return EventoMision.DESCUBRIMIENTO;
         }
-        return "Ninguno";
+        return EventoMision.NADA;
     }
+
 }
