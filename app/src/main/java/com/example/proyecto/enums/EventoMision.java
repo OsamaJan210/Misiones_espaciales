@@ -4,5 +4,6 @@ public enum EventoMision {
     FALLO,
     AVANCE,
     DESCUBRIMIENTO,
+    NUEVANAVE,
     NADA
 }

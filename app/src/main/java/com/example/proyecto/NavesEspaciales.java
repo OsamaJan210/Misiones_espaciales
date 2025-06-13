@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Random;
 
 public class NavesEspaciales {
     
@@ -317,5 +318,25 @@ public class NavesEspaciales {
                 ", experienciaCientifica=" + experienciaCientifica +
                 ", experienciaEstrategica=" + experienciaEstrategica +
                 '}';
+    }
+
+    public static NavesEspaciales naveRandom(){
+        Random random = new Random();
+
+        String[] nombresNavesRandom = {"Black souls","Drakukeo","Goku","Pikachu","Joker", "Wynnship", "Titanic", "Bombardero", "Tralalero", "Switch", "Peñas", "Ryuji", "Omega", "Alice", };
+
+        int longNombresNave = random.nextInt(nombresNavesRandom.length);
+        int autonomiaMaxima = random.nextInt(1500, 3000) + 1;
+        int autonomiaActual = autonomiaMaxima;
+        int capacidadCarga = random.nextInt(1500, 3000) +1;
+        boolean sensoresCientificos = true;
+        int experienciaCientifica = random.nextInt(0,5)+1;
+        int experienciaEstrategica = random.nextInt(0,5)+1;
+        int experienciaTecnica = random.nextInt(0,5)+1;
+
+        NavesEspaciales nuevaNave = new NavesEspaciales(nombresNavesRandom[longNombresNave], autonomiaMaxima, autonomiaActual, capacidadCarga, sensoresCientificos, experienciaTecnica, experienciaCientifica, experienciaEstrategica);
+        naves.add(nuevaNave);
+        
+        return null;
     }
 }

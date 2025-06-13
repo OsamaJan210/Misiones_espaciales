@@ -348,7 +348,7 @@ public abstract class Mision{
     public static Mision misionRandom() {
         Random random = new Random();
 
-        String[] nombresMisionesRandom = {"Hibana","Azami","Ying","Thunderbird","Frost"};
+        String[] nombresMisionesRandom = {"Hibana","Azami","Ying","Thunderbird","Frost", "Tachanka", "Kapkan", "Vaporeon", "Gothitelle", "Rowlet", "Hinoa", "Minoto", "Ado", "Alice", };
         int[] duracionesMisionesRandom = {5,10,15,20,25};
         int[] autonomiaCargaMisionesRandom = {500,600,700,800,900};
         ExperienciaTipo[] tiposXPMisionesRandom = {ExperienciaTipo.CIENTIFICA, ExperienciaTipo.ESTRATEGICA,

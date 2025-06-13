@@ -105,7 +105,13 @@ public class Simulacion {
             mision.estado = MissionStatus.COMPLETADA;
         }
         else if(evento == EventoMision.DESCUBRIMIENTO){
+            System.out.println("Evento aleatorio! Se ha descubierto una nueva misión!");
             Mision.misionRandom();
+            mision.estado = MissionStatus.COMPLETADA;
+        }
+        else if(evento == EventoMision.NUEVANAVE){
+            System.out.println("Evento aleatorio! Se ha descubierto una nueva nave!");
+            NavesEspaciales.naveRandom();
             mision.estado = MissionStatus.COMPLETADA;
         }
 
@@ -137,6 +143,8 @@ public class Simulacion {
             return EventoMision.AVANCE;
         } else if (numero <= 20) {
             return EventoMision.DESCUBRIMIENTO;
+        } else if (numero <=25){
+            return EventoMision.NUEVANAVE;
         }
         return EventoMision.NADA;
     }
