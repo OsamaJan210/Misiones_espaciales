@@ -187,7 +187,7 @@ public class NavesEspaciales {
     public static void logTablaNaves(){
         
             System.out.println("***NAVES***");
-        String[] headers = {"Nombre", "Autonomía máxima", "Autonomía actual", "Capacidad Carga","Tiene sensores científicos","Experiéncia técnica","Experiéncia científica","Experiéncia estratégica","Experiencia total"};
+        String[] headers = {"Nombre", "Autonomía máxima", "Autonomía actual", "Capacidad Carga","Sensores científicos","XP técnica","XP científica","XP estratégica","XP total"};
         String[][] data = new String[naves.size()][9];
         for (int i = 0; i < naves.size(); i++) {
             NavesEspaciales nave = naves.get(i);

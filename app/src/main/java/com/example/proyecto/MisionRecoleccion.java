@@ -44,6 +44,11 @@ public class MisionRecoleccion extends Mision{
     public String getExtraData() {
         return "";
     }
+
+    @Override
+    public String getCantidadExperiencia() {
+        return String.valueOf(cantidadXP);
+    }
     
 
     @Override

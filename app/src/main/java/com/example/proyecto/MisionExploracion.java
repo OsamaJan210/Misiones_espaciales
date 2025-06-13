@@ -51,6 +51,11 @@ public class MisionExploracion extends Mision{
     public String getExtraData() {
         return String.valueOf(autonomia);
     }
+
+    @Override
+    public String getCantidadExperiencia() {
+        return String.valueOf(cantidadXP);
+    }
     
     
     @Override
