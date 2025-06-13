@@ -3,7 +3,8 @@ package com.example.proyecto.enums;
 public enum MissionType {
     EXPLORACION("Exploracion"),
     RECOLECCION_DATOS("Recoleccion"),
-    COLONIZACION("Colonizacion");
+    COLONIZACION("Colonizacion"),
+    ESPECIAL("Especial");
 
 
     private final String name; 

@@ -122,7 +122,10 @@ public class Simulacion {
                 nave.setExperienciaTecnica(nave.getExperienciaTecnica() + 1+modificador);
                 nave.setAutonomiaActual(nave.getAutonomiaActual() - ((MisionRecoleccion) mision).getDuracion());
                 break;
-                
+            case ESPECIAL:
+                nave.setExperienciaTecnica(nave.getExperienciaTecnica() + 2);
+                nave.setExperienciaEstrategica(nave.getExperienciaEstrategica() + 2);
+                nave.setExperienciaCientifica(nave.getExperienciaCientifica() + 2);
         }
         System.out.println("Autonomía restante: " + nave.getAutonomiaActual());
     }
