@@ -348,19 +348,19 @@ public abstract class Mision{
     public static Mision misionRandom() {
         Random random = new Random();
 
-        String[] nombresNavesRandom = {"Hibana","Azami","Ying","Thunderbird","Frost"};
-        int[] duracionesNavesRandom = {5,10,15,20,25};
-        int[] autonomiaCargaNavesRandom = {500,600,700,800,900};
-        ExperienciaTipo[] tiposXPNavesRandom = {ExperienciaTipo.CIENTIFICA, ExperienciaTipo.ESTRATEGICA,
+        String[] nombresMisionesRandom = {"Hibana","Azami","Ying","Thunderbird","Frost"};
+        int[] duracionesMisionesRandom = {5,10,15,20,25};
+        int[] autonomiaCargaMisionesRandom = {500,600,700,800,900};
+        ExperienciaTipo[] tiposXPMisionesRandom = {ExperienciaTipo.CIENTIFICA, ExperienciaTipo.ESTRATEGICA,
         ExperienciaTipo.TECNICA};
 
         // NR es el acrónimo de naves Random, para ahorrar espacio
-        int indexNombreNR = random.nextInt(nombresNavesRandom.length);
-        int indexDuracionNR = random.nextInt(duracionesNavesRandom.length);
-        int indexAutonomiaCargaNR = random.nextInt(autonomiaCargaNavesRandom.length);
-        int prioridadNR = random.nextInt(100) + 1;
+        int indexNombreNR = random.nextInt(nombresMisionesRandom.length);
+        int indexDuracionNR = random.nextInt(duracionesMisionesRandom.length);
+        int indexAutonomiaCargaNR = random.nextInt(autonomiaCargaMisionesRandom.length);
+        int prioridadNR = random.nextInt(10) + 1;
         int tipoMisionNR = random.nextInt(3);
-        ExperienciaTipo tipoXPNR = tiposXPNavesRandom[random.nextInt(tiposXPNavesRandom.length)];
+        ExperienciaTipo tipoXPNR = tiposXPMisionesRandom[random.nextInt(tiposXPMisionesRandom.length)];
         int cantidadXPNR = random.nextInt(5) + 1;
 
         Mision nuevaMision;
@@ -368,42 +368,42 @@ public abstract class Mision{
         switch (tipoMisionNR){
             case 0:
                 nuevaMision = new MisionExploracion(
-                nombresNavesRandom[indexNombreNR],
+                nombresMisionesRandom[indexNombreNR],
                 prioridadNR,
-                duracionesNavesRandom[indexDuracionNR],
+                duracionesMisionesRandom[indexDuracionNR],
                 MissionType.EXPLORACION,
                 tipoXPNR,
                 cantidadXPNR,
-                autonomiaCargaNavesRandom[indexAutonomiaCargaNR]
+                autonomiaCargaMisionesRandom[indexAutonomiaCargaNR]
                 );
             break;
 
             case 1:
                 nuevaMision = new MisionExploracion(
-                nombresNavesRandom[indexNombreNR],
+                nombresMisionesRandom[indexNombreNR],
                 prioridadNR,
-                duracionesNavesRandom[indexDuracionNR],
+                duracionesMisionesRandom[indexDuracionNR],
                 MissionType.COLONIZACION,
                 tipoXPNR,
                 cantidadXPNR,
-                autonomiaCargaNavesRandom[indexAutonomiaCargaNR]
+                autonomiaCargaMisionesRandom[indexAutonomiaCargaNR]
                 );
             break;
             case 2:
                 nuevaMision = new MisionExploracion(
-                nombresNavesRandom[indexNombreNR],
+                nombresMisionesRandom[indexNombreNR],
                 prioridadNR,
-                duracionesNavesRandom[indexDuracionNR],
+                duracionesMisionesRandom[indexDuracionNR],
                 MissionType.RECOLECCION_DATOS,
                 tipoXPNR,
                 cantidadXPNR,
-                autonomiaCargaNavesRandom[indexAutonomiaCargaNR]
+                autonomiaCargaMisionesRandom[indexAutonomiaCargaNR]
                 );
             break;
             default:
                 return null;
         }
-        
+
     misiones.add(nuevaMision);
     System.out.println("Misión aleatoria creada: ");
     nuevaMision.logMision();
