@@ -91,31 +91,39 @@ public class Simulacion {
     private static void procesarMision(NavesEspaciales nave, Mision mision) {
         System.out.println("Nave seleccionada: " + nave.getNombre());
         System.out.println("Ejecutando misión...");
-
+        int modificador =0;
+        EventoMision evento = eventoAleatorio();
+        System.out.println("Evento aleatorio: " + evento);
+        if(evento == EventoMision.FALLO){
+            System.out.println("Fallo! La misión no se ha completado");
+            modificador=-1;
+            mision.estado = MissionStatus.FALLIDA;
+        }
+        else if(evento == EventoMision.AVANCE){
+            System.out.println("Avance tecnológico! La nave ha ganado el doble de experiéncia");
+            modificador=+1;
+            mision.estado = MissionStatus.COMPLETADA;
+        }
+        else if(evento == EventoMision.DESCUBRIMIENTO){
+            Mision.misionRandom();
+            mision.estado = MissionStatus.COMPLETADA;
+        }
 
         switch (mision.getMissionType()) {
             case COLONIZACION:
-                nave.setExperienciaEstrategica(nave.getExperienciaEstrategica() + 1);
+                nave.setExperienciaEstrategica(nave.getExperienciaEstrategica() + 1+modificador);
                 nave.setAutonomiaActual(nave.getAutonomiaActual() - ((MisionColonizacion) mision).getDuracion());
                 break;
             case EXPLORACION:
-                nave.setExperienciaCientifica(nave.getExperienciaCientifica() + 1);
+                nave.setExperienciaCientifica(nave.getExperienciaCientifica() + 1+modificador);
                 nave.setAutonomiaActual(nave.getAutonomiaActual() - ((MisionExploracion) mision).getAutonomia());
                 break;
             case RECOLECCION_DATOS:
-                nave.setExperienciaTecnica(nave.getExperienciaTecnica() + 1);
+                nave.setExperienciaTecnica(nave.getExperienciaTecnica() + 1+modificador);
                 nave.setAutonomiaActual(nave.getAutonomiaActual() - ((MisionRecoleccion) mision).getDuracion());
                 break;
                 
         }
-        EventoMision evento = eventoAleatorio();
-
-        if(evento == EventoMision.FALLO){
-            nave.setExperienciaCientifica(nave.getExperienciaCientifica() - 1);
-        }
-        System.out.println("Evento aleatorio: " + evento);
-        mision.estado  = MissionStatus.COMPLETADA;
-        System.out.println("Experiencia ganada +1");
         System.out.println("Autonomía restante: " + nave.getAutonomiaActual());
     }
 
@@ -133,5 +141,4 @@ public class Simulacion {
         }
         return EventoMision.NADA;
     }
-
 }
